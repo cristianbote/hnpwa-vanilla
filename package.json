@@ -1,12 +1,38 @@
 {
   "name": "hnpwa-vanilla",
   "version": "1.0.0",
-  "description": "",
+  "description": "HN PWA build with no framework",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start-prod": "npm run build-prod; NODE_ENV=production PORT=80 node server.js",
+    "serve": "webpack-dev-server --progress --inline --port 8080 --config webpack.config.js",
+    "build-prod": "NODE_ENV=production webpack --config webpack.config.js"
   },
   "keywords": [],
-  "author": "",
-  "license": "ISC"
+  "author": "Cristian Bote",
+  "license": "ISC",
+  "dependencies": {
+    "babel-core": "^6.22.1",
+    "babel-loader": "^6.2.10",
+    "babel-plugin-transform-object-rest-spread": "^6.23.0",
+    "babel-preset-env": "^1.2.1",
+    "bundle-loader": "^0.5.4",
+    "css-loader": "^0.26.1",
+    "express": "^4.14.1",
+    "webpack": "^2.2.0",
+    "webpack-dev-middleware": "^1.10.1",
+    "webpack-dev-server": "^1.16.2"
+  },
+  "devDependencies": {
+    "babel-preset-es2015-native-modules": "^6.9.4",
+    "copy-webpack-plugin": "^4.0.1",
+    "file-loader": "^0.9.0",
+    "node-sass": "^4.3.0",
+    "url-loader": "^0.5.7",
+    "sass-loader": "^4.1.1",
+    "style-loader": "^0.13.1"
+  },
+  "engines": {
+    "node": ">=5.0.0"
+  }
 }
