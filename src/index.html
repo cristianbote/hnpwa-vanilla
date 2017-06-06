@@ -6,10 +6,144 @@
     <meta name="mobile-web-app-capable" content="yes">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
     <title>hnpwa-vanilla</title>
-    <style></style>
+    <style>
+        html, body {
+            padding: 0;
+            margin: 0;
+            font-family: sans-serif;
+            width: 100%;
+            height: 100%;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        #app {
+            display: flex;
+            flex: 1;
+            flex-direction: column;
+            height: 100%;
+        }
+
+        header {
+            display: flex;
+            background: white;
+            flex-direction: row;
+            padding: 8px 4px;
+            z-index: 1;
+            border-bottom: 1px solid lightgrey;
+        }
+
+        .logo {
+            border: 1px solid dodgerblue;
+            color: dodgerblue;
+            display: flex;
+            padding: 0 0.5em;
+            height: 30px;
+            align-items: center;
+            justify-content: center;
+        }
+
+        nav {
+            display: flex;
+            flex-direction: row;
+            padding: 0 0 0 4px;
+            align-items: center;
+            justify-content: center;
+            color: dodgerblue;
+        }
+
+        nav a,
+        nav a:link {
+            display: flex;
+            color: dimgray;
+            text-decoration: none;
+            padding: 2px;
+        }
+
+        nav a.active {
+            color: dodgerblue;
+        }
+
+        section {
+            display: flex;
+            flex: 1;
+            height: 100%;
+            background: whitesmoke;
+            flex-direction: column;
+            overflow: auto;
+            padding: 0;
+        }
+
+        article {
+            padding: 8px;
+            background: ghostwhite;
+            border-bottom: 1px solid lightgrey;
+        }
+
+        article h1 {
+            display: block;
+            width: 100%;
+            font-size: 1em;
+            font-weight: normal;
+            padding: 0;
+            margin: 0 0 0.5em;
+        }
+
+        article h1 .basedomain {
+            font-weight: normal;
+            color: darkgrey;
+        }
+
+        article .details {
+            display: flex;
+            flex: 1;
+            flex-direction: row;
+            justify-content: space-between;
+            font-size: 0.85em;
+            margin: 0 0 0.5em;
+        }
+
+        article .details .author {
+            font-weight: bold;
+            color: dodgerblue;
+        }
+
+        article .details .stars {
+            font-weight: bold;
+            color: dimgray;
+        }
+
+        article .subdetails {
+            display: flex;
+            flex-direction: row;
+            font-size: 0.85em;
+        }
+
+        article .subdetails .elapsed {
+            font-weight: bold;
+            color: dimgray;
+        }
+
+        article .subdetails .comments {
+            font-weight: bold;
+            color: dodgerblue;
+            margin: 0 0 0 0.5em;
+        }
+    </style>
 </head>
 <body>
-<div class="app"></div>
+<div id="app">
+    <header>
+        <div class="logo">
+            vanilla
+        </div>
+    </header>
+    <section class="view-container">
+
+    </section>
+</div>
 <!-- Code -->
 <script src="bundle.js"></script>
 </body>
