@@ -11,5 +11,7 @@
  */
 
 export const urls = {
-    'new': (page) => `https://node-hnapi.herokuapp.com/news?page=${page}`
+    'new': (page) => `https://hacker-news.firebaseio.com/v0/newstories.json?pretty=print`,
+    'tops': (page) => `https://node-hnapi.herokuapp.com/news?page=${page}`,
+    'item': (id) => `https://hacker-news.firebaseio.com/v0/item/${id}.json?pretty=print`
 };

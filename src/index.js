@@ -14,8 +14,8 @@ const HeaderNode = AppNode.querySelector('header');
 
 initialize(
     {
-        '/': NewsView,
-        '/top': TopView,
+        '/': TopView,
+        '/news': NewsView,
     },
     document.querySelector('.view-container'),
     {

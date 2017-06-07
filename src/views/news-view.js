@@ -1,17 +1,18 @@
 import { div } from '../core/dom-api';
 import { urls } from '../urls';
-
+import { filledArray } from '../core/filled-array';
 import { ArticleElement } from '../elements/article-element';
 
 export const NewsView = () => {
-    let articles = [];
-    let template;
     let count = 30;
+    let articles = filledArray(30, ArticleElement);
+    let template;
     let pageNumber = 1;
+    let cache;
 
     const nextPage = () => {
         pageNumber += 1;
-        loadData();
+        render();
     };
 
     const previousPage = () => {
@@ -19,26 +20,28 @@ export const NewsView = () => {
         pageNumber = Math.max(pageNumber, 1);
 
         // Load the data afterwards
-        loadData();
+        render();
     };
 
     const loadData = () => {
         fetch(urls.new(pageNumber))
             .then(res => res.json())
             .then(res => {
-                articles = res.map(itemData => {
-                    return ArticleElement({ ...itemData  });
-                });
-
+                cache = res;
                 render();
             });
     };
 
-    function createTemplate() {
+    const createTemplate = () => {
+        if (!!cache && cache.length) {
+            let cached = cache.slice(count * (pageNumber - 1), count * pageNumber);
+            articles = cached.map(id => ArticleElement({ id }));
+        }
+
         return div({
             className: 'new-view'
         }, articles);
-    }
+    };
 
     function render() {
         template.parentElement.replaceChild(createTemplate(), template);

@@ -1,17 +1,12 @@
 import { div } from '../core/dom-api';
 import { urls } from '../urls';
-
+import { filledArray } from '../core/filled-array';
 import { ArticleElement } from '../elements/article-element';
 
 export const TopView = () => {
-    let articles = [
-        ArticleElement(),
-        ArticleElement(),
-        ArticleElement(),
-        ArticleElement()
-    ];
     let template;
     let count = 30;
+    let articles = filledArray(count, ArticleElement);
     let pageNumber = 1;
 
     const nextPage = () => {
@@ -28,7 +23,7 @@ export const TopView = () => {
     };
 
     const loadData = () => {
-        fetch(urls.new(pageNumber))
+        fetch(urls.tops(pageNumber))
             .then(res => res.json())
             .then(res => {
                 articles = res.map(itemData => {
@@ -50,6 +45,8 @@ export const TopView = () => {
     }
 
     template = createTemplate();
+
+    loadData();
 
     return template;
 };

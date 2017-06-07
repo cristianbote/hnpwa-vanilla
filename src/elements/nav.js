@@ -23,8 +23,8 @@ export const Nav = (props) => {
     let template = nav(
         {},
         [
-            link({ href: '/', className: ifPathMatchesSetActive(props.currentRoute, '/'), handleClick: handleOnClick }, 'new'),
-            link({ href: '/top', className: ifPathMatchesSetActive(props.currentRoute, '/top'), handleClick: handleOnClick }, 'top'),
+            link({ href: '/', className: ifPathMatchesSetActive(props.currentRoute, '/'), handleClick: handleOnClick }, 'top'),
+            link({ href: '/news', className: ifPathMatchesSetActive(props.currentRoute, '/news'), handleClick: handleOnClick }, 'new'),
             link({ href: '/show', className: ifPathMatchesSetActive(props.currentRoute, '/show'), handleClick: handleOnClick }, 'show')
         ]
     );
