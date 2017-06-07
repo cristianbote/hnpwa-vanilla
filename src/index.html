@@ -82,6 +82,10 @@
             border-bottom: 1px solid lightgrey;
         }
 
+        article * {
+            transition: all .2s ease-in-out;
+        }
+
         article h1 {
             display: block;
             width: 100%;
@@ -91,9 +95,18 @@
             margin: 0 0 0.5em;
         }
 
+        article.loading h1 {
+            background: rgba(0, 0, 0, 0.1);
+            color: rgba(0, 0, 0, 0);
+        }
+
         article h1 .basedomain {
             font-weight: normal;
             color: darkgrey;
+        }
+
+        article.loading h1 .basedomain {
+            color: transparent;
         }
 
         article .details {
@@ -110,9 +123,19 @@
             color: dodgerblue;
         }
 
+        article.loading .details .author {
+            background: rgba(30, 144, 255, 0.1);
+            color: transparent;
+        }
+
         article .details .stars {
             font-weight: bold;
             color: dimgray;
+        }
+
+        article.loading .details .stars {
+            color: transparent;
+            background: rgba(0, 0, 0, 0.1);
         }
 
         article .subdetails {
@@ -126,10 +149,21 @@
             color: dimgray;
         }
 
+        article.loading .subdetails .elapsed {
+            font-weight: bold;
+            color: transparent;
+            background: rgba(0, 0, 0, 0.1);
+        }
+
         article .subdetails .comments {
             font-weight: bold;
             color: dodgerblue;
             margin: 0 0 0 0.5em;
+        }
+
+        article.loading .subdetails .comments {
+            background: rgba(30, 144, 255, 0.1);
+            color: transparent;
         }
     </style>
 </head>

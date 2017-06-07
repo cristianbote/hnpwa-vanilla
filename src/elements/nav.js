@@ -1,4 +1,4 @@
-import { a, nav } from '../dom/api';
+import { a, nav } from '../core/dom-api';
 
 const link = (props, label) => {
     let template = a({ ...props }, label);
@@ -17,7 +17,7 @@ function ifPathMatchesSetActive(path, href) {
     return path === href && ('active');
 }
 
-const Nav = (props) => {
+export const Nav = (props) => {
 
     let currentActive;
     let template = nav(
@@ -38,7 +38,7 @@ const Nav = (props) => {
             nextActive.classList.add('active');
             currentActive = nextActive;
 
-            // TODO: Handle pushState
+            // Push the state
             window.history.pushState(null, null, path);
             window.handlePushState(path);
         }
@@ -46,5 +46,3 @@ const Nav = (props) => {
 
     return template;
 };
-
-export { Nav }
