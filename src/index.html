@@ -5,7 +5,36 @@
     <base href="/">
     <meta name="mobile-web-app-capable" content="yes">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#FFFFFF">
     <title>hnpwa-vanilla</title>
+    <script>
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.register('/sw.js')
+                .then(function(registration) {
+                    registration.onupdatefound = function() {
+                        if (navigator.serviceWorker.controller) {
+                            var installingWorker = registration.installing;
+                            installingWorker.onstatechange = function() {
+                                switch (installingWorker.state) {
+                                    case 'installed':
+                                        break;
+                                    case 'redundant':
+                                        throw new Error('The installing ' +
+                                            'service worker became redundant.');
+                                    default:
+                                    // Ignore
+                                }
+                            };
+                        }
+                    };
+                }).catch(function(e) {
+                console.error('Error during service worker registration:', e);
+            });
+        } else {
+            console.log('service worker is not supported');
+        }
+    </script>
     <style>
         html, body {
             padding: 0;
