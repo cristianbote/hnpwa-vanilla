@@ -9,30 +9,14 @@
     <meta name="theme-color" content="#FFFFFF">
     <title>hnpwa-vanilla</title>
     <script>
-        if ('serviceWorker' in navigator) {
-            navigator.serviceWorker.register('/sw.js')
+        if('serviceWorker' in navigator) {
+            navigator.serviceWorker.register('/sw.js', { scope: '/' })
                 .then(function(registration) {
-                    registration.onupdatefound = function() {
-                        if (navigator.serviceWorker.controller) {
-                            var installingWorker = registration.installing;
-                            installingWorker.onstatechange = function() {
-                                switch (installingWorker.state) {
-                                    case 'installed':
-                                        break;
-                                    case 'redundant':
-                                        throw new Error('The installing ' +
-                                            'service worker became redundant.');
-                                    default:
-                                    // Ignore
-                                }
-                            };
-                        }
-                    };
-                }).catch(function(e) {
-                console.error('Error during service worker registration:', e);
+                    console.log('Service Worker Registered');
+                });
+            navigator.serviceWorker.ready.then(function(registration) {
+                console.log('Service Worker Ready');
             });
-        } else {
-            console.log('service worker is not supported');
         }
     </script>
     <style>
@@ -193,6 +177,16 @@
         article.loading .subdetails .comments {
             background: rgba(30, 144, 255, 0.1);
             color: transparent;
+        }
+
+        .more-items {
+            padding: 16px;
+            text-align: center;
+            background: transparent;
+            border: 0;
+            display: block;
+            width: 100%;
+            font-size: 1em;
         }
     </style>
 </head>

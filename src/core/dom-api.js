@@ -4,7 +4,9 @@
  * @param {HTMLElement} el
  */
 function setAttrs(attrs, el) {
+    let uniqueId = Math.round(Math.random() * Date.now()).toString(20);
     Object.keys(attrs).forEach(key => el[key] = attrs[key]);
+    el.setAttribute('uid', uniqueId);
 }
 
 /**
@@ -50,3 +52,4 @@ export const span = createElement('span');
 export const article = createElement('article');
 export const a = createElement('a');
 export const nav = createElement('nav');
+export const button = createElement('button');

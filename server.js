@@ -36,7 +36,11 @@ if (isDeveloping) {
     });
 }
 
-const httpServer = http.createServer(app);
+const httpServer = http.createServer(function (req, res) {
+    res.writeHead(301, { "Location": "https://" + req.headers['host'] + req.url });
+    res.end();
+});
+
 const httpsServer = https.createServer(options, app);
 
 httpServer.listen(PORT, '0.0.0.0', null, function () {

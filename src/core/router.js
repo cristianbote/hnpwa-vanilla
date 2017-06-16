@@ -11,12 +11,15 @@ function _cleanContainer() {
     if (currentView && currentView.parentElement) {
         currentView.parentElement.removeChild(currentView);
     }
+
     container.innerHTML = '';
 }
 
 function mountRouteElement(elem) {
     _cleanContainer();
-    currentView = elem();
+
+    currentView = elem(container);
+
     container.appendChild(currentView);
     hooks.afterMount();
 }
