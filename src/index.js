@@ -7,6 +7,7 @@ import { initialize } from './core/router';
 
 import { NewsView } from './views/news-view';
 import { TopView } from './views/top-view';
+import { CommentsView } from './views/comments-view';
 
 // References
 const AppNode = document.getElementById('app');
@@ -16,6 +17,7 @@ initialize(
     {
         '/': TopView,
         '/news': NewsView,
+        '/item': CommentsView
     },
     document.querySelector('.view-container'),
     {

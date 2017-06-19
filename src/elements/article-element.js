@@ -18,7 +18,9 @@ export const ArticleElement = (props) => {
 
     const createTemplate = () => {
         return article({ className: (data === defaultProps) && 'loading' }, [
-            h1(null, [
+            h1({
+                    onclick: () => { data.type === 'link' ? window.open(data.url) : location.href = `/item?${props.id}`; }
+                }, [
                 data.title,
                 span({ className: 'basedomain' }, !!data.domain ? ` (${data.domain})` : '')]
             ),
@@ -28,7 +30,10 @@ export const ArticleElement = (props) => {
             ]),
             div({ className: 'subdetails'}, [
                 div({ className: 'elapsed'}, data.time_ago),
-                a({ className: 'comments'}, data.comments_count ? `${data.comments_count} comments` : 'discuss')
+                a({
+                    className: 'comments',
+                    href: props && `/item?id=${props.id}`
+                }, data.comments_count ? `${data.comments_count} comments` : 'discuss')
             ])
         ]);
     };

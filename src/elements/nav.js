@@ -34,14 +34,14 @@ export const Nav = (props) => {
         let nextActive = template.querySelector(`a[href="${path}"]`);
 
         if (nextActive) {
-            currentActive.classList.remove('active');
+            currentActive && currentActive.classList.remove('active');
             nextActive.classList.add('active');
             currentActive = nextActive;
-
-            // Push the state
-            window.history.pushState(null, null, path);
-            window.handlePushState(path);
         }
+
+        // Push the state
+        window.history.pushState(null, null, path);
+        window.handlePushState(path);
     }
 
     return template;

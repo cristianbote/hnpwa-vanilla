@@ -14,14 +14,6 @@ export const TopView = () => {
         loadData();
     };
 
-    const previousPage = () => {
-        pageNumber -= 1;
-        pageNumber = Math.max(pageNumber, 1);
-
-        // Load the data afterwards
-        loadData();
-    };
-
     const loadData = () => {
         fetch(urls.tops(pageNumber))
             .then(res => res.json())

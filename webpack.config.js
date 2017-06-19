@@ -32,7 +32,7 @@ const plugins = [
         { from: path.resolve(__dirname, './src/index.html'), to: '.' },
         { from: path.resolve(__dirname, './src/manifest.json'), to: '.' },
         { from: path.resolve(__dirname, './src/sw.js'), to: '.' },
-        { from: path.resolve(__dirname, './assets'), to: './assets' }
+        { from: path.resolve(__dirname, './assets/favicon.png'), to: '.' }
     ])
 ];
 

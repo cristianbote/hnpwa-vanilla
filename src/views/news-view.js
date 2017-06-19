@@ -1,4 +1,4 @@
-import { div } from '../core/dom-api';
+import { div, button } from '../core/dom-api';
 import { urls } from '../urls';
 import { filledArray } from '../core/filled-array';
 import { ArticleElement } from '../elements/article-element';
@@ -34,20 +34,30 @@ export const NewsView = () => {
 
     const createTemplate = () => {
         if (!!cache && cache.length) {
-            let cached = cache.slice(count * (pageNumber - 1), count * pageNumber);
+            let cached = cache.slice(0, count * pageNumber);
             articles = cached.map(id => ArticleElement({ id }));
         }
 
         return div({
             className: 'new-view'
-        }, articles);
+        }, articles.concat([
+            button({
+                className: 'more-items',
+                onclick: nextPage
+            }, 'Load more items')
+        ]));
     };
 
     function render() {
-        template.parentElement.replaceChild(createTemplate(), template);
+        if (!!template.parentElement) {
+            let newTemplate = createTemplate();
+            template.parentElement.replaceChild(newTemplate, template);
+            template = newTemplate;
+        }
     }
 
     template = createTemplate();
+
     loadData();
 
     return template;
