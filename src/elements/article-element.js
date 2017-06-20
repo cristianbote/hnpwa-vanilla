@@ -5,11 +5,11 @@ import { set, get } from '../cache-store';
 export const ArticleElement = (props) => {
     let defaultProps = {
         title: 'Loading',
-        domain: 'loading.com',
-        user: 'loadng',
-        points: 1,
-        time_ago: 'loading seconds ago',
-        comments_count: 0
+        user: 'loading',
+        score: 1,
+        time: 'loading seconds ago',
+        descendants: 0,
+        url: '//blabla.com/'
     };
     let template;
     let empty = !props || (Object.keys(props).length === 1 && !!props.id);
@@ -17,23 +17,26 @@ export const ArticleElement = (props) => {
     let data = empty ? defaultProps : props;
 
     const createTemplate = () => {
+
+        let domain = data.url && data.url.split('//')[1].split('/')[0];
+
         return article({ className: (data === defaultProps) && 'loading' }, [
             h1({
                     onclick: () => { data.type === 'link' ? window.open(data.url) : location.href = `/item?${props.id}`; }
                 }, [
                 data.title,
-                span({ className: 'basedomain' }, !!data.domain ? ` (${data.domain})` : '')]
+                span({ className: 'basedomain' }, !!domain ? ` (${domain})` : '')]
             ),
             div({ className: 'details'}, [
-                a({ className: 'author'}, data.user),
-                div({ className: 'stars'}, `${data.points} ★`)
+                a({ className: 'author'}, data.by),
+                div({ className: 'stars'}, `${data.score} ★`)
             ]),
             div({ className: 'subdetails'}, [
-                div({ className: 'elapsed'}, data.time_ago),
+                div({ className: 'elapsed'}, data.time.toString()),
                 a({
                     className: 'comments',
                     href: props && `/item?id=${props.id}`
-                }, data.comments_count ? `${data.comments_count} comments` : 'discuss')
+                }, data.descendants ? `${data.descendants} comments` : 'discuss')
             ])
         ]);
     };
@@ -61,11 +64,10 @@ export const ArticleElement = (props) => {
                 .then(res => {
                     data = {
                         title: res.title,
-                        domain: res.url && res.url.split('//')[1].split('/')[0],
                         user: res.by,
                         points: res.score,
-                        time_ago: 'loading seconds ago',
-                        comments_count: res.descendants
+                        time: 'loading seconds ago',
+                        descendants: res.descendants
                     };
 
                     set(props.id, data, Date.now() + 10e3);

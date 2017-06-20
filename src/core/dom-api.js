@@ -4,7 +4,7 @@
  * @param {HTMLElement} el
  */
 function setAttrs(attrs, el) {
-    let uniqueId = Math.round(Math.random() * Date.now()).toString(20);
+    let uniqueId = Math.round(Math.random() * Date.now()).toString(20).substr(0, 4);
     Object.keys(attrs).forEach(key => el[key] = attrs[key]);
     el.setAttribute('uid', uniqueId);
 }

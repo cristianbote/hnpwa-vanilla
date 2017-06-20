@@ -25,7 +25,9 @@ export const Nav = (props) => {
         [
             link({ href: '/', className: ifPathMatchesSetActive(props.currentRoute, '/'), handleClick: handleOnClick }, 'top'),
             link({ href: '/news', className: ifPathMatchesSetActive(props.currentRoute, '/news'), handleClick: handleOnClick }, 'new'),
-            link({ href: '/show', className: ifPathMatchesSetActive(props.currentRoute, '/show'), handleClick: handleOnClick }, 'show')
+            link({ href: '/show', className: ifPathMatchesSetActive(props.currentRoute, '/show'), handleClick: handleOnClick }, 'show'),
+            link({ href: '/ask', className: ifPathMatchesSetActive(props.currentRoute, '/ask'), handleClick: handleOnClick }, 'ask'),
+            link({ href: '/jobs', className: ifPathMatchesSetActive(props.currentRoute, '/jobs'), handleClick: handleOnClick }, 'jobs')
         ]
     );
 

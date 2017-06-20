@@ -1,12 +1,11 @@
-import {
-    div, article, h1, span, a
-} from './core/dom-api';
-
 import { Nav } from './elements/nav';
 import { initialize } from './core/router';
 
 import { NewsView } from './views/news-view';
 import { TopView } from './views/top-view';
+import { ShowView } from './views/show-view';
+import { AskView } from './views/ask-view';
+import { JobsView } from './views/jobs-view';
 import { CommentsView } from './views/comments-view';
 
 // References
@@ -17,7 +16,10 @@ initialize(
     {
         '/': TopView,
         '/news': NewsView,
-        '/item': CommentsView
+        '/item': CommentsView,
+        '/show': ShowView,
+        '/ask': AskView,
+        '/jobs': JobsView
     },
     document.querySelector('.view-container'),
     {

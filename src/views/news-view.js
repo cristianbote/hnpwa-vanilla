@@ -1,5 +1,5 @@
 import { div, button } from '../core/dom-api';
-import { urls } from '../urls';
+import { getData } from '../core/database';
 import { filledArray } from '../core/filled-array';
 import { ArticleElement } from '../elements/article-element';
 
@@ -7,12 +7,12 @@ export const NewsView = () => {
     let count = 30;
     let articles = filledArray(30, ArticleElement);
     let template;
-    let pageNumber = 1;
+    let pageNumber = 0;
     let cache;
 
     const nextPage = () => {
         pageNumber += 1;
-        render();
+        loadData();
     };
 
     const previousPage = () => {
@@ -24,11 +24,20 @@ export const NewsView = () => {
     };
 
     const loadData = () => {
-        fetch(urls.new(pageNumber))
-            .then(res => res.json())
+
+        getData('newstories', pageNumber * count, (pageNumber + 1) * count)
             .then(res => {
-                cache = res;
-                render();
+                let nodeArticles = res.map(itemData => {
+                    return ArticleElement({...itemData});
+                });
+
+                if (pageNumber === 0) {
+                    articles = nodeArticles.slice();
+                    render();
+                } else {
+                    let refChild = template.querySelector('.more-items');
+                    nodeArticles.forEach(node => template.insertBefore(node, refChild));
+                }
             });
     };
 
