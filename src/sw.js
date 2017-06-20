@@ -1,27 +1,11 @@
-let version = '0.1';
+importScripts('https://unpkg.com/workbox-sw@0.0.2');
 
-self.addEventListener('install', e => {
-    let timeStamp = Date.now();
-    e.waitUntil(
-        caches.open('hnpwa-vanilla').then(cache => {
-            return cache.addAll([
-                    `/`,
-                    `/index.html`,
-                    `/bundle.js`
-                ])
-                .then(() => self.skipWaiting());
-        })
-    )
-});
+const workboxSW = new WorkboxSW({clientsClaim: true});
 
-self.addEventListener('activate',  event => {
-    event.waitUntil(self.clients.claim());
-});
+// This array will be populated by workboxBuild.injectManifest() when the
+// production service worker is generated.
+workboxSW.precache([]);
 
-self.addEventListener('fetch', event => {
-    event.respondWith(
-        caches.match(event.request, { ignoreSearch:true }).then(response => {
-            return response || fetch(event.request);
-        })
-    );
+workboxSW.router.setDefaultHandler({
+    handler: workboxSW.strategies.staleWhileRevalidate()
 });
