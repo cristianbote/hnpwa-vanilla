@@ -6,9 +6,8 @@ self.addEventListener('install', e => {
         caches.open('hnpwa-vanilla').then(cache => {
             return cache.addAll([
                     `/`,
-                    `!/sockjs-node/info`,
-                    `/index.html?timestamp=${timeStamp}`,
-                    `/bundle.js?timestamp=${timeStamp}`
+                    `/index.html`,
+                    `/bundle.js`
                 ])
                 .then(() => self.skipWaiting());
         })
