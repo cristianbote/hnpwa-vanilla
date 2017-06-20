@@ -16,7 +16,7 @@ function setAttrs(attrs, el) {
  * @returns {boolean}
  */
 function ifStringSetText(val, el) {
-    if (!!val.match) {
+    if (!!val && !!val.match) {
         el.innerText = val;
         return true;
     }

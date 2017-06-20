@@ -27,8 +27,8 @@ export const ShowView = () => {
 
         getData('showstories', pageNumber * count, (pageNumber + 1) * count)
             .then(res => {
-                let nodeArticles = res.map(itemData => {
-                    return ArticleElement({...itemData});
+                let nodeArticles = res.map(id => {
+                    return ArticleElement({ id });
                 });
 
                 if (pageNumber === 0) {

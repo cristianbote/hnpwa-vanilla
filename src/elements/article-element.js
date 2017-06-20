@@ -1,4 +1,5 @@
 import { div, article, a, span, h1 } from '../core/dom-api';
+import { getItemData } from '../core/database';
 import { urls } from '../urls';
 import { set, get } from '../cache-store';
 
@@ -52,26 +53,17 @@ export const ArticleElement = (props) => {
     template = createTemplate();
 
     if (empty && props && props.id) {
+
         let cached = get(props.id);
 
         if (cached) {
             data = cached.data;
             render();
         } else {
-
-            fetch(urls.item(props.id))
-                .then(res => res.json())
+            getItemData(props.id)
                 .then(res => {
-                    data = {
-                        title: res.title,
-                        user: res.by,
-                        points: res.score,
-                        time: 'loading seconds ago',
-                        descendants: res.descendants
-                    };
-
+                    data = res;
                     set(props.id, data, Date.now() + 10e3);
-
                     render();
                 });
         }

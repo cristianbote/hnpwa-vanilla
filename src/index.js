@@ -1,5 +1,6 @@
 import { Nav } from './elements/nav';
 import { initialize } from './core/router';
+import { database } from './core/database';
 
 import { NewsView } from './views/news-view';
 import { TopView } from './views/top-view';
