@@ -1,5 +1,18 @@
 {
   "hosting": {
-    "public": "public"
+    "public": "public",
+    "rewrites": [
+      {
+      "source": "**",
+      "destination": "/index.html"
+      }
+    ],
+    "headers": [{
+      "source" : "**/*.@(jpg|jpeg|gif|png)",
+      "headers" : [ {
+        "key" : "Cache-Control",
+        "value" : "max-age=7200"
+      }]
+    }]
   }
 }
