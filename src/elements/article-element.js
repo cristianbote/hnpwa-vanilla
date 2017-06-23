@@ -1,6 +1,5 @@
 import { div, article, a, span, h1 } from '../core/dom-api';
 import { getItemData } from '../core/database';
-import { urls } from '../urls';
 import { set, get } from '../cache-store';
 
 export const ArticleElement = (props) => {
