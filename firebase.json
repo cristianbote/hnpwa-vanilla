@@ -3,8 +3,19 @@
     "public": "public",
     "rewrites": [
       {
+        "source": "/icons*",
+        "destination": "/"
+      },
+      {
       "source": "**",
       "destination": "/index.html"
+      }
+    ],
+    "redirects": [
+      {
+        "source": "http://*",
+        "destination": "https://*",
+        "type": 301
       }
     ],
     "headers": [{

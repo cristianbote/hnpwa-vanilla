@@ -12,16 +12,16 @@
   "author": "Cristian Bote",
   "license": "ISC",
   "dependencies": {
-    "babel-core": "^6.22.1",
-    "babel-loader": "^6.2.10",
+    "babel-core": "^6.25.0",
+    "babel-loader": "^6.4.1",
     "babel-plugin-transform-object-rest-spread": "^6.23.0",
-    "babel-preset-env": "^1.2.1",
-    "bundle-loader": "^0.5.4",
-    "css-loader": "^0.26.1",
-    "express": "^4.14.1",
-    "webpack": "^2.2.0",
-    "webpack-dev-middleware": "^1.10.1",
-    "webpack-dev-server": "^1.16.2"
+    "babel-preset-env": "^1.5.2",
+    "bundle-loader": "^0.5.5",
+    "css-loader": "^0.26.4",
+    "express": "^4.15.3",
+    "webpack": "^3.0.0",
+    "webpack-dev-middleware": "^1.11.0",
+    "webpack-dev-server": "^1.16.5"
   },
   "devDependencies": {
     "babel-preset-es2015-native-modules": "^6.9.4",

@@ -34,11 +34,13 @@ function createElement(tagName) {
         let el = document.createElement(tagName);
         attrs && setAttrs(attrs, el);
         if (children) {
-            if (!!children.map) children.forEach(child => {
-                if (!ifStringSetText(child, el)) {
-                    el.appendChild(child);
-                }
-            });
+            if (!!children.map) {
+                children.forEach(child => {
+                    if (!ifStringSetText(child, el)) {
+                        el.appendChild(child);
+                    }
+                });
+            }
 
             ifStringSetText(children, el);
         }

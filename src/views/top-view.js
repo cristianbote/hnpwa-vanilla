@@ -45,7 +45,11 @@ export const TopView = () => {
     function render() {
         if (!!template.parentElement) {
             let newTemplate = createTemplate();
-            template.parentElement.replaceChild(newTemplate, template);
+            let frag = document.createDocumentFragment();
+
+            frag.appendChild(newTemplate);
+
+            template.parentElement.replaceChild(frag, template);
             template = newTemplate;
         }
     }
