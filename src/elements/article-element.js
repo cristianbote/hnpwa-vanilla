@@ -1,6 +1,7 @@
 import { div, article, a, span, h1 } from '../core/dom-api';
 import { getItemData } from '../core/database';
 import { set, get } from '../cache-store';
+import { TimeAgoElement } from './time-ago-element';
 
 export const ArticleElement = (props) => {
     let defaultProps = {
@@ -22,7 +23,7 @@ export const ArticleElement = (props) => {
 
         return article({ className: (data === defaultProps) && 'loading' }, [
             h1({
-                    onclick: () => { data.type === 'link' ? window.open(data.url) : location.href = `/item?${props.id}`; }
+                    onclick: () => { data.type === 'link' ? window.open(data.url) : location.href = `/item?id=${props.id}`; }
                 }, [
                 data.title,
                 span({ className: 'basedomain' }, !!domain ? ` (${domain})` : '')]
@@ -32,7 +33,7 @@ export const ArticleElement = (props) => {
                 div({ className: 'stars'}, `${data.score} ★`)
             ]),
             div({ className: 'subdetails'}, [
-                div({ className: 'elapsed'}, data.time.toString()),
+                TimeAgoElement({ className: 'elapsed', timestamp: data.time}, data.time.toString()),
                 a({
                     className: 'comments',
                     href: props && `/item?id=${props.id}`

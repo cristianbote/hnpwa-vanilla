@@ -6,22 +6,14 @@ import { ArticleElement } from '../elements/article-element';
 export const CommentsView = (props) => {
     let template;
 
+    console.log('props', props);
+
     const loadData = () => {
-        // fetch(urls.tops(pageNumber))
-        //     .then(res => res.json())
-        //     .then(res => {
-        //         let nodeArticles = res.map(itemData => {
-        //             return ArticleElement({...itemData});
-        //         });
-        //
-        //         if (pageNumber === 1) {
-        //             articles = nodeArticles.slice();
-        //             render();
-        //         } else {
-        //             let refChild = template.querySelector('.more-items');
-        //             nodeArticles.forEach(node => template.insertBefore(node, refChild));
-        //         }
-        //     });
+        fetch(urls.item(props.routeParams.id))
+            .then(res => res.json())
+            .then(res => {
+                console.log(res);
+            });
     };
 
     function createTemplate() {

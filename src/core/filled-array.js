@@ -1,8 +1,9 @@
+/**
+ * Returns an list with the generated function result.
+ * @param {number} count
+ * @param {function} generatorFunction
+ * @returns {array}
+ */
 export const filledArray = (count, generatorFunction) => {
-    let list = [];
-    for( let i = 0; i < count; i += 1) {
-        list.push(generatorFunction());
-    }
-
-    return list.slice();
+    return [generatorFunction()];
 };

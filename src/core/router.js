@@ -15,10 +15,10 @@ function _cleanContainer() {
     container.innerHTML = '';
 }
 
-function mountRouteElement(elem) {
+function mountRouteElement(elem, routeParams) {
     _cleanContainer();
 
-    currentView = elem(container);
+    currentView = elem({ container, routeParams });
 
     container.appendChild(currentView);
     hooks.afterMount();
@@ -48,13 +48,29 @@ function lookupPathsWithParams(path) {
     return out;
 }
 
+/**
+ * Returns the location params from url
+ * @returns {object}
+ */
+function getLocationParams() {
+    let out = {};
+
+    // Parse the location object
+    location.search.substr(1).split('&').forEach(parts => {
+        let values = parts.split('=');
+        out[values[0]] = values[1];
+    });
+
+    return out;
+}
+
 export const loadRoute = () => {
     let currentRoute = window.location.pathname;
     let route = routes[currentRoute];
 
     if (route) {
         hooks.beforeMount(route, currentRoute);
-        mountRouteElement(route);
+        mountRouteElement(route, getLocationParams());
     } else {
         console.log('no route found');
     }
