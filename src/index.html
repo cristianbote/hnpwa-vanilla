@@ -10,12 +10,12 @@
     <meta name="theme-color" content="#FFFFFF">
     <title>hnpwa-vanilla</title>
     <script>
-        if('serviceWorker' in navigator) {
-            navigator.serviceWorker.register('/sw.js', { scope: '/' })
-                .then(function(registration) {
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.register('/sw.js', {scope: '/'})
+                .then(function (registration) {
                     console.log('Service Worker Registered');
                 });
-            navigator.serviceWorker.ready.then(function(registration) {
+            navigator.serviceWorker.ready.then(function (registration) {
                 console.log('Service Worker Ready');
             });
         }
@@ -197,6 +197,13 @@
         <div class="logo">
             vanilla
         </div>
+        <nav>
+            <a href="/">top</a>
+            <a href="/news">new</a>
+            <a href="/show">show</a>
+            <a href="/ask">ask</a>
+            <a href="/jobs">jobs</a>
+        </nav>
     </header>
     <section class="view-container">
 

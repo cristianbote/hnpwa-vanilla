@@ -1,4 +1,3 @@
-import { Nav } from './elements/nav';
 import { initialize } from './core/router';
 
 import { NewsView } from './views/news-view';
@@ -21,12 +20,5 @@ initialize(
         '/ask': AskView,
         '/jobs': JobsView
     },
-    document.querySelector('.view-container'),
-    {
-        beforeMount: (route, currentRoute) => {
-            if (!HeaderNode.querySelector('nav')) {
-                HeaderNode.appendChild(Nav({ currentRoute }));
-            }
-        }
-    }
+    document.querySelector('.view-container')
 );
