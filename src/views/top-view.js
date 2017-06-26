@@ -1,5 +1,5 @@
 import { div, button } from '../core/dom-api';
-import { getData } from '../core/database';
+import { urls } from '../urls';
 import { filledArray } from '../core/filled-array';
 import { ArticleElement } from '../elements/article-element';
 
@@ -15,10 +15,12 @@ export const TopView = () => {
     };
 
     const loadData = () => {
-        getData('topstories', pageNumber * count, (pageNumber + 1) * count)
+        fetch(urls.topstories(pageNumber))
+            .then(res => res.json())
             .then(res => {
-                let nodeArticles = res.map(id => {
-                    return ArticleElement({ id });
+
+                let nodeArticles = res.map(itemData => {
+                    return ArticleElement({...itemData});
                 });
 
                 if (pageNumber === 0) {
@@ -45,11 +47,7 @@ export const TopView = () => {
     function render() {
         if (!!template.parentElement) {
             let newTemplate = createTemplate();
-            let frag = document.createDocumentFragment();
-
-            frag.appendChild(newTemplate);
-
-            template.parentElement.replaceChild(frag, template);
+            template.parentElement.replaceChild(newTemplate, template);
             template = newTemplate;
         }
     }

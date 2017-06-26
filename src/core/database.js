@@ -1,9 +1,12 @@
 import { urls } from '../urls';
 import { get, set } from '../cache-store';
 
-const ref = new Firebase("https://hacker-news.firebaseio.com/v0/");
+let ref;
 
 export const getData = (dataType, start, end) => {
+
+    if (!ref) ref = new Firebase("https://hacker-news.firebaseio.com/v0/");
+
     return new Promise(resolve => {
         let stamp = Date.now();
         let out = get(dataType);
@@ -22,6 +25,9 @@ export const getData = (dataType, start, end) => {
 };
 
 export const getItemData = (id) => {
+
+    if (!ref) ref = new Firebase("https://hacker-news.firebaseio.com/v0/");
+
     return new Promise(resolve => {
         let stamp = Date.now();
         let out = get(id);

@@ -19,7 +19,7 @@ export const ArticleElement = (props) => {
 
     const createTemplate = () => {
 
-        let domain = data.url && data.url.split('//')[1].split('/')[0];
+        let domain = data.domain || (data.type === 'link' && data.url && data.url.split('//')[1].split('/')[0]);
 
         return article({ className: (data === defaultProps) && 'loading' }, [
             h1({
@@ -29,15 +29,17 @@ export const ArticleElement = (props) => {
                 span({ className: 'basedomain' }, !!domain ? ` (${domain})` : '')]
             ),
             div({ className: 'details'}, [
-                a({ className: 'author'}, data.by),
-                div({ className: 'stars'}, `${data.score} ★`)
+                a({ className: 'author'}, data.by || data.user),
+                div({ className: 'stars'}, `${data.score || data.points} ★`)
             ]),
             div({ className: 'subdetails'}, [
-                TimeAgoElement({ className: 'elapsed', timestamp: data.time}, data.time.toString()),
+                data.time_ago
+                    ? span({ className: 'elapsed' }, data.time_ago)
+                    : TimeAgoElement({ className: 'elapsed', timestamp: data.time}, data.time.toString()),
                 a({
                     className: 'comments',
                     href: props && `/item?id=${props.id}`
-                }, data.descendants ? `${data.descendants} comments` : 'discuss')
+                }, data.descendants ? `${data.descendants || data.comments_count} comments` : 'discuss')
             ])
         ]);
     };
