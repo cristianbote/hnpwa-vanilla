@@ -35,7 +35,8 @@ const plugins = [
         { from: path.resolve(__dirname, './assets'), to: '.' },
         { from: path.resolve(__dirname, './favicon.png'), to: '.' },
         { from: path.resolve(__dirname, './lib'), to: './lib' }
-    ])
+    ]),
+    new webpack.optimize.ModuleConcatenationPlugin(),
 ];
 
 const devServer = {
@@ -49,7 +50,6 @@ const devServer = {
 // Production configs and setup
 if (isProd) {
     plugins.push(
-        new webpack.optimize.ModuleConcatenationPlugin(),
         new webpack.DefinePlugin({
             'process.env': {
                 NODE_ENV: JSON.stringify('production')

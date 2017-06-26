@@ -1,4 +1,4 @@
-importScripts('https://unpkg.com/workbox-sw@0.0.2');
+importScripts('https://unpkg.com/workbox-sw@1.0.1');
 
 const workboxSW = new WorkboxSW({clientsClaim: true});
 
