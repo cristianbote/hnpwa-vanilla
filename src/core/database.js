@@ -4,9 +4,6 @@ import { get, set } from '../cache-store';
 let ref;
 
 export const getData = (dataType, start, end) => {
-
-    if (!ref) ref = new Firebase("https://hacker-news.firebaseio.com/v0/");
-
     return new Promise(resolve => {
         let stamp = Date.now();
         let out = get(dataType);

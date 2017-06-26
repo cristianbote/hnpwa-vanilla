@@ -6,7 +6,7 @@ import { ArticleElement } from '../elements/article-element';
 export const TopView = () => {
     let template;
     let count = 30;
-    let articles = filledArray(count, ArticleElement);
+    let articles = [];
     let pageNumber = 0;
 
     const nextPage = () => {
@@ -44,6 +44,12 @@ export const TopView = () => {
         ]));
     }
 
+    function createFirstTemplate() {
+        return div({
+            className: 'top-view'
+        }, "Loading content");
+    }
+
     function render() {
         if (!!template.parentElement) {
             let newTemplate = createTemplate();
@@ -52,7 +58,7 @@ export const TopView = () => {
         }
     }
 
-    template = createTemplate();
+    template = createFirstTemplate();
 
     loadData();
 
