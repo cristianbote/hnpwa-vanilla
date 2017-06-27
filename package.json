@@ -6,7 +6,7 @@
   "scripts": {
     "start-prod": "npm run build-prod; NODE_ENV=production PORT=80 node server.js",
     "serve": "webpack-dev-server --progress --inline --port 8080 --config webpack.config.js",
-    "build-prod": "rm -rf public; NODE_ENV=production webpack --config webpack.config.js; node ./build-sw.js"
+    "build-prod": "rm -rf public; NODE_ENV=production webpack --config webpack.config.js"
   },
   "keywords": [],
   "author": "Cristian Bote",
@@ -30,8 +30,7 @@
     "node-sass": "^4.3.0",
     "sass-loader": "^4.1.1",
     "style-loader": "^0.13.1",
-    "url-loader": "^0.5.7",
-    "workbox-build": "^1.0.1"
+    "url-loader": "^0.5.7"
   },
   "engines": {
     "node": ">=5.0.0"
