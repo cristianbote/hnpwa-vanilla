@@ -7,7 +7,7 @@ export const TopView = () => {
     let template;
     let count = 30;
     let articles = [];
-    let pageNumber = 0;
+    let pageNumber = 1;
 
     const nextPage = () => {
         pageNumber += 1;
@@ -23,7 +23,7 @@ export const TopView = () => {
                     return ArticleElement({...itemData});
                 });
 
-                if (pageNumber === 0) {
+                if (pageNumber === 1) {
                     articles = nodeArticles.slice();
                     render();
                 } else {

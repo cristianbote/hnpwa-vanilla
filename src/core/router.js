@@ -73,7 +73,7 @@ export const loadRoute = () => {
 
     if (route) {
         if (currentActiveLink) currentActiveLink.classList.remove('active');
-        navLink.classList.add('active');
+        if (navLink) navLink.classList.add('active');
 
         hooks.beforeMount(route, currentRoute);
         mountRouteElement(route, getLocationParams());

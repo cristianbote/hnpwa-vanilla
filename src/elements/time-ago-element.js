@@ -51,7 +51,8 @@ function pluralize(config, value) {
         : `${value} ${config[1]}`;
 }
 
-export const TimeAgoElement = (props) => {
+export const timeAgo = (timestamp) => {
+    "use strict";
     let seconds,
         minutes,
         hours,
@@ -60,8 +61,7 @@ export const TimeAgoElement = (props) => {
         months,
         out = '';
 
-    let stamp = props.timestamp;
-    let diff = (Date.now() / 1e3) - stamp;
+    let diff = (Date.now() / 1e3) - timestamp;
 
     seconds = Math.round(diff);
     minutes = Math.round(diff / ONE_MINUTE);
@@ -94,8 +94,12 @@ export const TimeAgoElement = (props) => {
         out = pluralize(PLURAL.months, months);
     }
 
+    return out;
+};
+
+export const TimeAgoElement = (props) => {
     return span(
         props,
-        `${out} ago`
+        `${timeAgo(props.timestamp)} ago`
     );
 };

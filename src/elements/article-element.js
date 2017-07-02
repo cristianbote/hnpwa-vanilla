@@ -1,7 +1,7 @@
-import { div, article, a, span, h1 } from '../core/dom-api';
+import { article } from '../core/dom-api';
 import { getItemData } from '../core/database';
 import { set, get } from '../cache-store';
-import { TimeAgoElement } from './time-ago-element';
+import { timeAgo } from './time-ago-element';
 
 export const ArticleElement = (props) => {
     let defaultProps = {
@@ -19,29 +19,21 @@ export const ArticleElement = (props) => {
 
     const createTemplate = () => {
 
-        let domain = data.domain || (data.type === 'link' && data.url && data.url.split('//')[1].split('/')[0]);
+        let domain = data.domain || (data.url && data.url.indexOf('/') !== -1 && data.url.split('//')[1].split('/')[0]);
         let commentsCount = data.descendants || data.comments_count;
+        let articleUrlOrAddress = data.url ? data.url : `/item?id=${props.id}`;
 
-        return article({ className: (data === defaultProps) && 'loading' }, [
-            h1({
-                    onclick: () => { data.type === 'link' ? window.open(data.url) : location.href = `/item?id=${props.id}`; }
-                }, [
-                data.title,
-                span({ className: 'basedomain' }, !!domain ? ` (${domain})` : '')]
-            ),
-            div({ className: 'details'}, [
-                a({ className: 'author'}, data.by || data.user),
-                div({ className: 'stars'}, `${data.score || data.points} ★`)
-            ]),
-            div({ className: 'subdetails'}, [
-                data.time_ago
-                    ? span({ className: 'elapsed' }, data.time_ago)
-                    : TimeAgoElement({ className: 'elapsed', timestamp: data.time}, data.time.toString()),
-                a({
-                    className: 'comments',
-                    href: props && `/item?id=${props.id}`
-                }, commentsCount ? `${commentsCount} comments` : 'discuss')
-            ])
+        return article({ className: (data === defaultProps) && 'loading' }, [`
+            <a class="h1-title" href="${articleUrlOrAddress}">${data.title} <span class="basedomain">// ${!!domain ? domain : ''}</span></a>
+            <div class="details">
+                <a href="#" class="author">${data.by || data.user}</a>
+                <div class="stars">${data.score || data.points}</div>
+            </div>
+            <div class="subdetails">
+                 <span class="elapsed">${data.time_ago ? data.time_ago : timeAgo(data.time) + ' ago'}</span>
+                 <a href="${props && `/item?id=${props.id}`}" class="comments">${commentsCount
+                    ? commentsCount + ' comments' : 'discuss'}</a>
+            </div>`
         ]);
     };
 

@@ -99,29 +99,35 @@
             border-bottom: 1px solid lightgrey;
         }
 
-        article * {
-            transition: all .2s ease-in-out;
-        }
-
+        article .h1-title,
         article h1 {
             display: block;
             width: 100%;
             font-size: 1em;
-            font-weight: normal;
             padding: 0;
             margin: 0 0 0.5em;
+            text-decoration: none;
+            color: dimgrey;
+            font-weight: bold;
         }
 
+        article * {
+            transition: all .2s ease-in-out;
+        }
+
+        article.loading .h1-title,
         article.loading h1 {
             background: rgba(0, 0, 0, 0.1);
             color: rgba(0, 0, 0, 0);
         }
 
+        article .h1-title .basedomain,
         article h1 .basedomain {
             font-weight: normal;
             color: dimgrey;
         }
 
+        article.loading .h1-title .basedomain,
         article.loading h1 .basedomain {
             color: transparent;
         }
