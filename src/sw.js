@@ -3,11 +3,15 @@ const URLS = [
     '/',
     '/index.html',
     '/lib/firebase.js',
-    '/icons/192x192.png',
-    '/icons/384x384.png',
-    '/icons/512x512.png',
-    '/favicon.png',
-    '/manifest.json',
+    '/icons/icon-72x72.png',
+    '/icons/icon-96x96.png',
+    '/icons/icon-128x128.png',
+    '/icons/icon-144x144.png',
+    '/icons/icon-152x152.png',
+    '/icons/icon-192x192.png',
+    '/icons/icon-384x384.png',
+    '/icons/icon-512x512.png',
+    '/favicon.ico',
     '/bundle.js'
 ];
 
@@ -31,7 +35,10 @@ self.addEventListener('install', function (event) {
 
 const clearOldCaches = () => {
     return caches.keys().then(keys => {
-        return Promise.all(keys.filter(key => key !== CACHE_NAME).map(key => caches.delete(key)));
+        return Promise.all(keys.filter(key => key !== CACHE_NAME).map(key => {
+            console.log('[sw] remove cache', key);
+            caches.delete(key);
+        }));
     });
 };
 

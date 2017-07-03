@@ -3,7 +3,7 @@ const webpack = require('webpack');
 const CopyPlugin = require('copy-webpack-plugin');
 const isProd = process.env.NODE_ENV === 'production';
 
-var devtool = isProd
+const devtool = isProd
     ? 'source-map'
     : 'cheap-module-eval-source-map';
 
@@ -20,7 +20,7 @@ const output = {
 const modules = {
     loaders: [
         { test: /\.(jpg|png|gif)$/, loader: 'url-loader?limit=10000' },
-        { test: /\.html/, loader: 'file-loader' },
+        { test: /\.html$/, loader: 'file-loader' },
         { test: /\.css$/, loader: 'style!css' },
         { test: /\.scss$/, loaders: ['style-loader', 'css-loader', 'sass-loader'] },
         { test: /\.js$/, loader: 'babel-loader', query: { plugins: [ 'babel-plugin-transform-object-rest-spread' ], presets: ['env'] } }
@@ -29,7 +29,6 @@ const modules = {
 
 const plugins = [
     new CopyPlugin([
-        { from: path.resolve(__dirname, './src/index.html'), to: '.' },
         { from: path.resolve(__dirname, './src/manifest.json'), to: '.' },
         { from: path.resolve(__dirname, './assets'), to: '.' },
         { from: path.resolve(__dirname, './favicon.ico'), to: '.' },

@@ -7,7 +7,8 @@
     "start-prod": "npm run build-prod; NODE_ENV=production PORT=80 node server.js",
     "serve": "webpack-dev-server --progress --inline --port 8080 --config webpack.config.js",
     "build-sw": "node sw-build.js",
-    "build-prod": "rm -rf public; NODE_ENV=production webpack --config webpack.config.js; npm run build-sw"
+    "html-minify": "node html-minify.js",
+    "build-prod": "rm -rf public; NODE_ENV=production webpack --config webpack.config.js; npm run build-sw; nm run html-minify"
   },
   "keywords": [],
   "author": "Cristian Bote",
@@ -28,6 +29,7 @@
     "babel-preset-es2015-native-modules": "^6.9.4",
     "copy-webpack-plugin": "^4.0.1",
     "file-loader": "^0.9.0",
+    "html-minifier": "^3.5.2",
     "node-sass": "^4.3.0",
     "sass-loader": "^4.1.1",
     "style-loader": "^0.13.1",
