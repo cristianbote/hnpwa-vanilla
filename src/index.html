@@ -47,9 +47,9 @@
             display: flex;
             background: white;
             flex-direction: row;
-            padding: 8px 4px;
             z-index: 1;
             border-bottom: 1px solid lightgrey;
+            align-items: center;
         }
 
         .logo {
@@ -57,6 +57,7 @@
             color: #0000FF;
             display: flex;
             padding: 0 0.5em;
+            margin: .5em;
             height: 30px;
             align-items: center;
             justify-content: center;
@@ -65,9 +66,8 @@
         nav {
             display: flex;
             flex-direction: row;
-            padding: 0 0 0 4px;
             align-items: center;
-            justify-content: center;
+            justify-content: space-between;
             color: #0000FF;
         }
 
@@ -76,7 +76,8 @@
             display: flex;
             color: dimgray;
             text-decoration: none;
-            padding: 2px;
+            padding: 0;
+            margin: .5em;
         }
 
         nav a.active {
@@ -143,7 +144,6 @@
 
         article .details .author {
             font-weight: bold;
-            color: #0000FF;
         }
 
         article.loading .details .author {
