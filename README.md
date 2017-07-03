@@ -7,6 +7,8 @@ This is an example of a PWA built using no framework for view manipulation just 
 
 Made with ❤️ in Cluj-Napoca, Transylvania 🏰
 
+> Icons made by [Freepik](http://www.freepik.com) Freepik from [www.flaticon.com](http://www.flaticon.com) is licensed by [CC 3.0 BY](http://creativecommons.org/licenses/by/3.0/)
+
 ## Installation
 
 1. Clone the repo    
