@@ -1,4 +1,4 @@
-const CACHE_NAME = '1-vanilla_hn';
+const CACHE_NAME = '{{cache}}';
 const URLS = [
     '/',
     '/index.html',
