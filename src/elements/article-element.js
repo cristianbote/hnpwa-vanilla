@@ -24,7 +24,7 @@ export const ArticleElement = (props) => {
         let articleUrlOrAddress = data.url ? data.url : `/item?id=${props.id}`;
 
         return article({ className: (data === defaultProps) && 'loading' }, [`
-            <a target="${!!domain ? '_blank' : '_top'}" class="h1-title" href="${articleUrlOrAddress}">${data.title} <span class="basedomain">${!!domain ? '// ' + domain : ''}</span></a>
+            <a target="${!!domain ? '_blank' : '_top'} "rel="noopener" class="h1-title" href="${articleUrlOrAddress}">${data.title} <span class="basedomain">${!!domain ? '// ' + domain : ''}</span></a>
             <div class="details">
                 <div class="author">${data.by || data.user}</div>
                 <div class="stars">${data.score || data.points}</div>
