@@ -9,8 +9,6 @@ let fileData = fs.readFileSync(FILE_PATH, 'utf8');
 console.log('[html-minify] minify');
 fileData = minify(fileData, {
     removeComments: true,
-    collapseWhitespace: true,
-    preserveLineBreaks: false,
     minifyCSS: true,
     minifyJS: true
 });
