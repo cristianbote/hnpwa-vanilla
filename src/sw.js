@@ -27,9 +27,9 @@ self.addEventListener('fetch', function (event) {
 // Cache resources
 self.addEventListener('install', function (event) {
     event.waitUntil(
-        caches.open(CACHE_NAME).then(function (cache) {
-            return cache.addAll(URLS)
-        })
+        caches.open(CACHE_NAME)
+            .then((cache) => cache.addAll(URLS))
+            .then(() => self.skipWaiting())
     );
 });
 

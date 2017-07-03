@@ -27,7 +27,7 @@ export const ArticleElement = (props) => {
             <a target="${!!domain ? '_blank' : '_top'} "rel="noopener" class="h1-title" href="${articleUrlOrAddress}">${data.title} <span class="basedomain">${!!domain ? '// ' + domain : ''}</span></a>
             <div class="details">
                 <div class="author">${data.by || data.user}</div>
-                <div class="stars">${data.score || data.points}</div>
+                <div class="stars">${data.score || data.points} ★</div>
             </div>
             <div class="subdetails">
                  <span class="elapsed">${data.time_ago ? data.time_ago : timeAgo(data.time) + ' ago'}</span>
