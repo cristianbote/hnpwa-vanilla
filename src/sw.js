@@ -6,7 +6,6 @@ const CRITICAL = [
 ];
 
 const NON_CRITICAL = [
-    '/lib/firebase.js',
     '/favicon.ico'
 ];
 
