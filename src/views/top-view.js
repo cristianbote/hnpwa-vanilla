@@ -47,7 +47,7 @@ export const TopView = () => {
     function createFirstTemplate() {
         return div({
             className: 'top-view'
-        }, "Loading content");
+        }, '<div class="content-loading">Loading content</div>');
     }
 
     function render() {

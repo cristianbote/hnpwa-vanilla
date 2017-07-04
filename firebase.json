@@ -7,13 +7,6 @@
       "destination": "/index.html"
       }
     ],
-    "redirects": [
-      {
-        "source": "http://hnpwa-vanilla.firebaseapp.com/",
-        "destination":"https://hnpwa-vanilla.firebaseapp.com/",
-        "type": 301
-      }
-    ],
     "headers": [
       {
         "source" : "**/*.@(jpg|jpeg|gif|png|ico)",
