@@ -1,5 +1,5 @@
 const fs = require('fs');
-const FILE_PATH = './src/index.html';
+const FILE_PATH = './public/index.html';
 const DESTINATION_PATH = './public/index.html';
 const minify = require('html-minifier').minify;
 

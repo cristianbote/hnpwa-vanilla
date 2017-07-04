@@ -239,7 +239,22 @@
     </section>
 </div>
 <!-- Code -->
-<script async defer src="/lib/firebase.js"></script>
+
+<script>
+
+    const appendFirebaseScript = () => {
+        let tag = document.createElement('script');
+        tag.src = '/lib/firebase.js';
+        document.body.appendChild(tag);
+    };
+
+    if ('requestIdleCallback' in window && location.pathname === '/') {
+        requestIdleCallback(appendFirebaseScript);
+    } else {
+        appendFirebaseScript();
+    }
+</script>
+
 <script src="/bundle.js"></script>
 </body>
 </html>

@@ -1,5 +1,5 @@
 const fs = require('fs');
-const FILE_PATH = './src/sw.js';
+const FILE_PATH = './public/sw.js';
 const DESTINATION_PATH = './public/sw.js';
 const HASH =  Math.round(Date.now() * Math.random()).toString(16);
 

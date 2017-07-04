@@ -1,17 +1,28 @@
 const CACHE_NAME = '{{cache}}';
-const URLS = [
+
+const CRITICAL = [
     '/',
-    '/index.html',
-    '/lib/firebase.js',
-    '/favicon.ico',
     '/bundle.js'
 ];
+
+const NON_CRITICAL = [
+    '/lib/firebase.js',
+    '/favicon.ico'
+];
+
+const addToCache = (request, response) => {
+    caches.open(CACHE_NAME).then(cache => cache.put(request, response));
+};
 
 // Respond with cached resources
 self.addEventListener('fetch', function (event) {
     event.respondWith(
-        caches.match(event.request).then(function (request) {
-            return request || fetch(event.request)
+        caches.match(event.request).then(function (response) {
+            return response || fetch(event.request).then(res => {
+                    let clone = res.clone();
+                    addToCache(event.request, clone);
+                    return res;
+                });
         })
     );
 });
@@ -20,7 +31,13 @@ self.addEventListener('fetch', function (event) {
 self.addEventListener('install', function (event) {
     event.waitUntil(
         caches.open(CACHE_NAME)
-            .then((cache) => cache.addAll(URLS))
+            .then((cache) => {
+                // Add the non-important resources
+                cache.addAll(NON_CRITICAL);
+
+                // Add the critical ones
+                return cache.addAll(CRITICAL)
+            })
             .then(() => self.skipWaiting())
     );
 });
