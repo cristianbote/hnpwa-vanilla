@@ -6,7 +6,6 @@
     <link rel="canonical" href="https://hnpwa-vanilla.firebaseapp.com/">
     <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
     <link rel="icon" href="/favicon.ico" type="image/x-icon">
-    <link rel="apple-touch-icon" sizes="72x72" href="/icons/icon-72x72.png">
     <link rel="manifest" href="/manifest.json">
     <meta name="mobile-web-app-capable" content="yes">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
@@ -25,6 +24,18 @@
                 });
             });
         }
+
+        const appendFirebaseScript = () => {
+            let tag = document.createElement('script');
+            tag.src = '/lib/firebase.js';
+            document.body.appendChild(tag);
+        };
+
+        //    if ('requestIdleCallback' in window && location.pathname === '/') {
+        //        requestIdleCallback(appendFirebaseScript);
+        //    } else {
+        //        appendFirebaseScript();
+        //    }
     </script>
     <style>
         html, body {
@@ -225,7 +236,7 @@
 <body>
 <div id="app">
     <header>
-        <div class="logo" title="Vanilla Hacker News PWA"></i></div>
+        <div class="logo" title="Vanilla Hacker News PWA"></div>
         <nav>
             <a href="/">top</a>
             <a href="/news">new</a>
@@ -239,22 +250,6 @@
     </section>
 </div>
 <!-- Code -->
-
-<script>
-
-    const appendFirebaseScript = () => {
-        let tag = document.createElement('script');
-        tag.src = '/lib/firebase.js';
-        document.body.appendChild(tag);
-    };
-
-    if ('requestIdleCallback' in window && location.pathname === '/') {
-        requestIdleCallback(appendFirebaseScript);
-    } else {
-        appendFirebaseScript();
-    }
-</script>
-
 <script src="/bundle.js"></script>
 </body>
 </html>
