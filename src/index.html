@@ -43,7 +43,7 @@
         window.appendFirebaseScript = function appendFirebaseScript() {
             // We don't need the lib if we're not where we should
             if (location.pathname === '/') {
-                setTimeout(appendFirebaseScript, 300);
+                setTimeout(_appendFirebaseScript, 300);
                 return;
             }
 
