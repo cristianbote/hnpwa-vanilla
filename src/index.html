@@ -9,7 +9,7 @@
     <link rel="manifest" href="/manifest.json">
     <meta name="mobile-web-app-capable" content="yes">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
-    <meta name="theme-color" content="#FFFFFF">
+    <meta name="theme-color" content="#ffb400">
     <title>Vanilla Hacker News PWA</title>
     <script>
         if ('serviceWorker' in navigator) {
@@ -25,17 +25,24 @@
             });
         }
 
-        const appendFirebaseScript = () => {
+        /**
+         * Append the firebase script
+         */
+        window.appendFirebaseScript = function appendFirebaseScript() {
+            // We don't need the lib if we're not where we should
+            if (location.pathname === '/') return;
+
+            // If there's a firebase already stop it
+            if (document.querySelector('*[src="/lib/firebase.js"]')) {
+                return;
+            }
+
             let tag = document.createElement('script');
             tag.src = '/lib/firebase.js';
             document.body.appendChild(tag);
         };
 
-        //    if ('requestIdleCallback' in window && location.pathname === '/') {
-        //        requestIdleCallback(appendFirebaseScript);
-        //    } else {
-        //        appendFirebaseScript();
-        //    }
+        window.addEventListener('DOMContentLoaded', appendFirebaseScript, false);
     </script>
     <style>
         html, body {
@@ -76,7 +83,7 @@
             align-items: center;
             justify-content: center;
             border-radius: 3px;
-            background-image: url('/icons/icon-72x72.png');
+            background-image: url('data:image/svg+xml;utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 486.739 486.739"><path d="M360.644 126.27c6.708-24.25 5.46-50.385-6.108-75.615-14.895-32.49-50.354-47.89-84.087-50.32-65.74-4.725-119.81 41.102-123.6 100.24-52.75 8.76-92.78 50.654-69.21 106.934 13.49 32.19 39.4 49.17 68.39 53.17.15.89.41 1.81.8 2.77 29.23 72.27 58.22 144.74 95.5 213.34 1.59 2.92 3.77 4.66 6.17 5.54 5.45 5.61 14.99 6.81 18.99-2.19 30.76-69.26 51.02-142.07 72.24-214.63 34.64 1.51 69.31-11.89 75.42-51.09 6.14-39.48-21.49-71.43-54.51-88.18zM204.07 326.6c-1.646-.857-3.258-1.294-4.816-1.457-8.95-21.378-17.743-42.838-26.436-64.327 3.125-.387 6.246-.935 9.372-1.58.612 1.646 1.638 3.25 3.227 4.738 16.562 15.488 33.75 30.225 51.407 44.37-6.236 8.446-12.502 16.87-18.76 25.29-4.684-2.317-9.368-4.612-13.994-7.033zm26.596 70.366c-3.682-7.932-7.317-15.884-10.872-23.866.186-.224.4-.386.582-.625 1.826-2.4 3.613-4.83 5.428-7.236 5.835 2.69 11.695 5.35 17.593 7.9-4.307 7.9-8.578 15.83-12.73 23.82zm24.016 49.144c-3.793-7.312-7.475-14.68-11.105-22.068 1.43-1.03 2.714-2.47 3.712-4.46 6.23-12.38 12.84-24.556 19.53-36.697 3.23 1.29 6.49 2.544 9.74 3.804-6.74 20-13.9 39.86-21.89 59.42zm29.716-83.335c-4.874-1.873-9.755-3.727-14.584-5.692-2.295-2.02-5.235-3.29-8.226-3.493-6.835-2.885-13.635-5.85-20.394-8.927 5.15-6.947 10.288-13.92 15.427-20.88 9.53 7.23 19.15 14.34 28.94 21.245 1.31.924 2.6 1.468 3.88 1.828-1.64 5.322-3.34 10.623-5.03 15.92zm49.85-122.736c-1.237-.36-2.518-.52-3.808-.54-1.533-.25-2.97-.23-4.32-.01-7.795-3.04-15.28-6.74-22.78-10.49-6.15-3.08-13.624-1.69-17.26 4.53-3.307 5.63-1.626 14.19 4.524 17.26 7.865 3.93 15.767 7.79 23.892 11.14-5.85 20.09-11.644 40.2-17.61 60.26-8.552-6.06-16.966-12.29-25.29-18.63 4.222-5.66 8.44-11.32 12.712-16.93 9.866-12.96-12.07-25.51-21.79-12.74-3.595 4.72-7.135 9.47-10.688 14.23-14.896-12.01-29.415-24.49-43.52-37.48 4.277-1.95 8.49-4.15 12.582-6.61 13.93-8.37 1.247-30.2-12.74-21.79-37.908 22.79-83.69 20.96-105.963-21.34-20.71-39.32 9.48-68.7 46.04-75.29 1.14 6.59 2.87 13.27 5.32 20.01 5.51 15.173 29.91 8.62 24.33-6.708-22.02-60.58 19.09-109.75 80.98-113.44 25.31-1.51 52.45 6.894 67.98 27.89 29.37 39.72 6.44 91.977-27.03 120.37-12.43 10.55 5.51 28.31 17.84 17.85 14.23-12.07 25.69-26.46 33.78-42.157 22.3 11.366 39.68 31.69 39.21 57.94-.53 29.927-32.65 35.673-56.42 32.63z" fill="#ffb400"/></svg>');
             background-repeat: no-repeat;
             background-position: center center;
             background-size: 28px 28px;
@@ -140,7 +147,7 @@
             padding: 0;
             margin: 0 0 0.5em;
             text-decoration: none;
-            color: dimgrey;
+            color: black;
             font-weight: bold;
         }
 
@@ -176,6 +183,7 @@
 
         article .details .author {
             font-weight: bold;
+            color: dimgrey;
         }
 
         article.loading .details .author {
@@ -200,7 +208,6 @@
         }
 
         article .subdetails .elapsed {
-            font-weight: bold;
             color: dimgray;
         }
 
@@ -211,7 +218,6 @@
         }
 
         article .subdetails .comments {
-            font-weight: bold;
             color: black;
             margin: 0 0 0 0.5em;
             border-radius: 3px;

@@ -1,6 +1,5 @@
-import { div, button } from '../core/dom-api';
+import { div } from '../core/dom-api';
 import { urls } from '../urls';
-import { filledArray } from '../core/filled-array';
 import { ArticleElement } from '../elements/article-element';
 
 export const CommentsView = (props) => {

@@ -5,7 +5,7 @@ import { ArticleElement } from '../elements/article-element';
 
 export const ShowView = () => {
     let count = 30;
-    let articles = filledArray(30, ArticleElement);
+    let articles = filledArray(10, ArticleElement);
     let template;
     let pageNumber = 0;
     let cache;
