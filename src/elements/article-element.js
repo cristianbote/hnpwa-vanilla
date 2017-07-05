@@ -60,7 +60,6 @@ export const ArticleElement = (props) => {
             getItemData(props.id)
                 .then(res => {
                     data = res;
-                    set(props.id, data, Date.now() + 10e3);
                     render();
                 });
         }

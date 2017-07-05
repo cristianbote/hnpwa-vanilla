@@ -33,8 +33,7 @@ const plugins = [
         { from: path.resolve(__dirname, './src/manifest.json'), to: '.' },
         { from: path.resolve(__dirname, './src/sw.js'), to: '.' },
         { from: path.resolve(__dirname, './assets'), to: '.' },
-        { from: path.resolve(__dirname, './favicon.ico'), to: '.' },
-        { from: path.resolve(__dirname, './lib'), to: './lib' }
+        { from: path.resolve(__dirname, './favicon.ico'), to: '.' }
     ]),
     new webpack.optimize.ModuleConcatenationPlugin(),
 ];

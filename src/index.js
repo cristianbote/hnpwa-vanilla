@@ -17,11 +17,7 @@ const routes = {
 
 const viewContainer = document.querySelector('.view-container');
 
-const hooks = {
-    beforeMount: function () {
-        if (!window['Firebase']) appendFirebaseScript();
-    }
-};
+const hooks = {};
 
 // Initialize the app
 initialize(routes, viewContainer, hooks);
