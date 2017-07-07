@@ -1,12 +1,12 @@
 import { div, button } from '../core/dom-api';
-import { getData } from '../core/database';
+import { urls } from '../urls';
 import { ArticleElement } from '../elements/article-element';
 
 export const GenericView = ({ viewClassName, urlName }) => {
     let count = 30;
     let articles = [];
     let template;
-    let pageNumber = 0;
+    let pageNumber = 1;
 
     const nextPage = () => {
         pageNumber += 1;
@@ -15,13 +15,15 @@ export const GenericView = ({ viewClassName, urlName }) => {
 
     const loadData = () => {
 
-        getData(urlName, pageNumber * count, (pageNumber + 1) * count)
+        fetch(urls[urlName](pageNumber))
+            .then(res => res.json())
             .then(res => {
-                let nodeArticles = res.map(id => {
-                    return ArticleElement({ id });
+
+                let nodeArticles = res.map(itemData => {
+                    return ArticleElement({...itemData});
                 });
 
-                if (pageNumber === 0) {
+                if (pageNumber === 1) {
                     articles = nodeArticles.slice();
                     render();
                 } else {

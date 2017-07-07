@@ -53,6 +53,7 @@
             z-index: 1;
             border-bottom: 1px solid lightgrey;
             align-items: center;
+            box-shadow: 0 0 40px rgba(0, 0, 0, 0.2);
         }
 
         .logo {
@@ -70,7 +71,7 @@
             background-position: center center;
             background-size: 28px 28px;
             min-width: 54px;
-            min-height: 34px;
+            min-height: 43px;
         }
 
         nav {
@@ -85,7 +86,7 @@
             display: flex;
             color: dimgray;
             text-decoration: none;
-            padding: .5em;
+            padding: .8em;
             margin: 0;
         }
 
@@ -163,6 +164,10 @@
             margin: 0 0 0.5em;
         }
 
+        article .details.job {
+            display: none;
+        }
+
         article .details .author {
             font-weight: bold;
             color: dimgrey;
@@ -208,6 +213,93 @@
         article.loading .subdetails .comments {
             background: rgba(30, 144, 255, 0.1);
             color: transparent;
+        }
+
+        .item-view h1 {
+            font-size: 1.1em;
+            padding: 16px;
+            margin: 0;
+            background-color: rgba(256, 256, 256, 0.75);
+        }
+
+        .item-view .subtitle {
+            display: flex;
+            padding: 8px 16px;
+            background-color: rgba(256, 256, 256, 0.3);
+        }
+
+        .item-view .subtitle .user {
+            font-weight: bold;
+            padding: 0 8px 0 0;
+            color: dimgray;
+        }
+
+        .item-view .subtitle .time-ago {
+            padding: 0 8px 0 8px;
+            color: dimgray;
+        }
+
+        .item-view .subtitle .stars {
+            padding: 0 0 0 8px;
+            color: dimgray;
+            vertical-align: middle;
+            position: relative;
+        }
+
+        .item-view .subtitle .stars span {
+            position: absolute;
+            right: -20px;
+            top: -3px;
+        }
+
+        .item-view .content {
+            padding: 8px 16px;
+            color: black;
+        }
+
+        .item-view .comments {
+            padding: 8px 16px;
+            color: black;
+            background-color: rgba(125, 125, 125, 0.05);
+        }
+
+        .comments > .comment > .reply {
+            display: none;
+        }
+
+        .comment {
+            display: flex;
+            flex-direction: column;
+            margin: 8px 0 0;
+            padding: 8px 0;
+            border-top: 1px solid dimgray;
+            position: relative;
+        }
+
+        .comment .reply {
+            position: absolute;
+            top: 4px;
+            left: -16px;
+        }
+
+        .comment .comment {
+            margin: 0 0 0 16px;
+        }
+
+        .comment .details {
+            display: flex;
+            flex-direction: row;
+            color: dimgrey;
+        }
+
+        .comment .details .user {
+            font-weight: bold;
+            margin: 0 8px 0 0;
+        }
+
+        .comment .content {
+            padding: 0;
+            line-height: 1.4em;
         }
 
         .more-items {
