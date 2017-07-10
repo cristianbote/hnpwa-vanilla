@@ -104,7 +104,7 @@ export const initialize = (routesDefinition, containerElement, hooksDefinition) 
     hooks = { ...hooks, ...hooksDefinition };
 
     // Assign the onclick action
-    anchorTags = [].slice.call(document.querySelectorAll('nav a'));
+    anchorTags = [].slice.call(document.querySelectorAll('nav .view'));
     anchorTags.forEach(node => node.onclick = window.handleOnClick);
 
     loadRoute();
