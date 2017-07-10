@@ -18,7 +18,19 @@ const addToCache = (request, response) => {
 self.addEventListener('fetch', function (event) {
     event.respondWith(
         caches.match(event.request).then(function (response) {
-            return response || fetch(event.request).then(res => {
+
+            return (response && new Promise((resolve) => {
+
+                    // Resolve the response
+                    resolve(response);
+
+                    // Fetch the request
+                    fetch(event.request).then(res => {
+                        // And cache it
+                        addToCache(event.request, res)
+                    });
+
+                })) || fetch(event.request).then(res => {
                     let clone = res.clone();
                     addToCache(event.request, clone);
                     return res;

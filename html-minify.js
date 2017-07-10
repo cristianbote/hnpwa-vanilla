@@ -5,6 +5,7 @@ const minify = require('html-minifier').minify;
 
 console.log('[html-minify] reading file');
 let fileData = fs.readFileSync(FILE_PATH, 'utf8');
+let size = fileData.length;
 
 console.log('[html-minify] minify');
 fileData = minify(fileData, {
@@ -13,5 +14,5 @@ fileData = minify(fileData, {
     minifyJS: true
 });
 
-console.log('[html-minify] write file', DESTINATION_PATH);
+console.log('[html-minify] write file', DESTINATION_PATH, (1 - fileData.length / size).toFixed(2));
 fs.writeFileSync(DESTINATION_PATH, fileData, 'utf8');
