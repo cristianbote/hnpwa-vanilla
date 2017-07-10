@@ -1,9 +1,13 @@
-import { div, button } from '../core/dom-api';
+import { div, button, footer } from '../core/dom-api';
 import { urls } from '../urls';
 import { ArticleElement } from '../elements/article-element';
 
+const footerComponent = footer(null, `
+        <a href="https://github.com/cristianbote/hnpwa-vanilla" target="_blank">
+            <img src="https://github.com/favicon.ico" alt="Github" width="16" />
+        </a>`);
+
 export const GenericView = ({ viewClassName, urlName }) => {
-    let count = 30;
     let articles = [];
     let template;
     let pageNumber = 1;
@@ -40,14 +44,15 @@ export const GenericView = ({ viewClassName, urlName }) => {
             button({
                 className: 'more-items',
                 onclick: nextPage
-            }, 'Load more items')
+            }, 'Load more items'),
+            footerComponent
         ]));
     };
 
     function createFirstTemplate() {
         return div({
             className: viewClassName
-        }, '<div class="content-loading">Loading content</div>');
+        }, `<div class="content-loading">Loading content</div>${footerComponent.outerHTML}`);
     }
 
     function render() {

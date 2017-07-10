@@ -38,13 +38,14 @@ export const CommentsView = (props) => {
     };
 
     function createTemplate() {
+        let hasComments = data.comments.length;
         let commentsContent = commentsElement(data.comments);
 
         return div({
             className: 'item-view'
         }, `
             <h1 className="title">${data.title}</h1>
-            <div class="subtitle">
+            <div class="subtitle ${data.type}">
                 <div class="user">${data.user}</div>
                 <div class="time-ago">${data.time_ago}</div>
                 <div class="stars">${data.points} <span>★</span></div>
@@ -53,7 +54,7 @@ export const CommentsView = (props) => {
                 ${data.content || 'No content'}
             </div>
             <div class="comments">
-                Comments
+                ${hasComments ? 'Comments' : 'No coments'}
                 
                 ${commentsContent.innerHTML}
             </div>

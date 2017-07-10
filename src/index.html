@@ -234,9 +234,18 @@
             color: dimgray;
         }
 
+        .item-view .subtitle.job .user,
+        .item-view .subtitle.job .stars {
+            display: none;
+        }
+
         .item-view .subtitle .time-ago {
-            padding: 0 8px 0 8px;
+            padding: 0 8px;
             color: dimgray;
+        }
+
+        .item-view .subtitle.job .time-ago {
+            padding: 0;
         }
 
         .item-view .subtitle .stars {
@@ -310,6 +319,16 @@
             display: block;
             width: 100%;
             font-size: 1em;
+            border-bottom: 1px solid lightgray;
+        }
+
+        footer {
+            font-size: 0.8em;
+            padding: 0.5em;
+            justify-content: center;
+            display: flex;
+            flex: 1;
+            width: 100%;
         }
     </style>
 </head>
@@ -325,9 +344,7 @@
             <a href="/jobs">jobs</a>
         </nav>
     </header>
-    <section class="view-container">
-
-    </section>
+    <section class="view-container"></section>
 </div>
 <!-- Code -->
 <script src="/bundle.js"></script>

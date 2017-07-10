@@ -55,3 +55,4 @@ export const article = createElement('article');
 export const a = createElement('a');
 export const nav = createElement('nav');
 export const button = createElement('button');
+export const footer = createElement('footer');

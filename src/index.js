@@ -1,18 +1,30 @@
 import { initialize } from './core/router';
-import { NewsView } from './views/news-view';
-import { TopView } from './views/top-view';
-import { ShowView } from './views/show-view';
-import { AskView } from './views/ask-view';
-import { JobsView } from './views/jobs-view';
+import { GenericView } from './elements/generic-view';
 import { CommentsView } from './views/comments-view';
 
 const routes = {
-    '/': TopView,
-    '/news': NewsView,
-    '/item': CommentsView,
-    '/show': ShowView,
-    '/ask': AskView,
-    '/jobs': JobsView
+    '/': () => GenericView({
+        viewClassName: 'top-view',
+        urlName: 'topstories'
+    }),
+    '/news': () => GenericView({
+        viewClassName: 'news-view',
+        urlName: 'newstories'
+    }),
+    '/show': () => GenericView({
+        viewClassName: 'show-view',
+        urlName: 'showstories'
+    }),
+    '/ask': () => GenericView({
+        viewClassName: 'ask-view',
+        urlName: 'askstories'
+    }),
+    '/jobs': () => GenericView({
+        viewClassName: 'jobs-view',
+        urlName: 'jobstories'
+    }),
+
+    '/item': CommentsView
 };
 
 const viewContainer = document.querySelector('.view-container');
