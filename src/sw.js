@@ -2,6 +2,7 @@ const CACHE_NAME = '{{cache}}';
 
 const CRITICAL = [
     '/',
+    'index.html',
     '/bundle.js',
     '/icons/icon-144x144.png'
 ];
@@ -10,31 +11,25 @@ const NON_CRITICAL = [
     '/favicon.ico'
 ];
 
+const hnapi = 'https://node-hnapi.herokuapp.com/';
+
 const addToCache = (request, response) => {
     caches.open(CACHE_NAME).then(cache => cache.put(request, response));
 };
 
 // Respond with cached resources
 self.addEventListener('fetch', function (event) {
+    let notFromCache = event.request.url.indexOf(hnapi) !== -1;
+
     event.respondWith(
-        caches.match(event.request).then(function (response) {
-
-            return (response && new Promise((resolve) => {
-
-                    // Resolve the response
-                    resolve(response);
-
-                    // Fetch the request
-                    fetch(event.request).then(res => {
-                        // And cache it
-                        addToCache(event.request, res)
+        notFromCache
+            ? fetch(event.request)
+            : caches.match(event.request).then(function (response) {
+                return response || fetch(event.request).then(res => {
+                        let clone = res.clone();
+                        addToCache(event.request, clone);
+                        return res;
                     });
-
-                })) || fetch(event.request).then(res => {
-                    let clone = res.clone();
-                    addToCache(event.request, clone);
-                    return res;
-                });
         })
     );
 });
