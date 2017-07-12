@@ -23,6 +23,10 @@
             "value" : "max-age=0, no-cache, no-store, must-revalidate"
           }
         ]
+      },
+      {
+        "source": "/",
+        "headers": [{"key": "link", "value": "</bundle.js>;rel=preload;as=script,</sw.js>;rel=preload;as=script"}]
       }
     ]
   }
