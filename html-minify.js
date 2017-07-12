@@ -11,7 +11,9 @@ console.log('[html-minify] minify');
 fileData = minify(fileData, {
     removeComments: true,
     minifyCSS: true,
-    minifyJS: true
+    minifyJS: true,
+    collapseWhitespace: true,
+    preserveLineBreaks: false
 });
 
 console.log('[html-minify] write file', DESTINATION_PATH, (1 - fileData.length / size).toFixed(2));
