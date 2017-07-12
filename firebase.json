@@ -26,7 +26,12 @@
       },
       {
         "source": "/",
-        "headers": [{"key": "link", "value": "</bundle.js>;rel=preload;as=script,</sw.js>;rel=preload;as=script"}]
+        "headers": [
+          {
+            "key": "Link",
+            "value": "</bundle.js>;rel=preload;as=script,</sw.js>;rel=preload;as=worker;nopush,<https://hnpwa.com/api/v0/news.json?page=1>;rel=preload;as=fetch;crossorigin"
+          }
+        ]
       }
     ]
   }
