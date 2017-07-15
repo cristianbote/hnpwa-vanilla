@@ -7,14 +7,9 @@ export const GenericView = ({ viewClassName, urlName }) => {
     let articles = [];
     let template;
     let pageNumber = 1;
-    let countPerPage = 30;
-    let totalPages;
 
     const nextPage = () => {
-
-        if (pageNumber === totalPages) return;
-
-        pageNumber = Math.min(totalPages, pageNumber + 1);
+        pageNumber += 1;
         loadData();
     };
 
@@ -26,28 +21,8 @@ export const GenericView = ({ viewClassName, urlName }) => {
         loadData();
     };
 
-    const totalItemsUrl = `https://hacker-news.firebaseio.com/v0/${urlName}.json`;
-
     const loadData = () => {
-
-        if (!totalPages) {
-
-            fetch(totalItemsUrl)
-                .then(res => res.json())
-                .then(res => {
-                    totalPages = Math.ceil(res.length / countPerPage);
-                    loadItemsData();
-                });
-        } else {
-            loadItemsData();
-        }
-    };
-
-    const loadItemsData = () => {
-        articles = [
-            div({}, 'Loading items')
-        ];
-        render();
+        template.classList.add('loading');
 
         fetch(urls[urlName](pageNumber))
             .then(res => res.json())
@@ -68,7 +43,6 @@ export const GenericView = ({ viewClassName, urlName }) => {
         }, [
             Pagination({
                 currentPage: pageNumber,
-                totalPages: totalPages,
                 onPrevious: () => previousPage(),
                 onNext: () => nextPage()
             })
@@ -86,6 +60,7 @@ export const GenericView = ({ viewClassName, urlName }) => {
             let newTemplate = createTemplate();
             template.parentElement.replaceChild(newTemplate, template);
             template = newTemplate;
+            template.classList.remove('loading');
         }
     }
 

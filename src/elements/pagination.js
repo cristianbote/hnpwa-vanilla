@@ -6,7 +6,7 @@ export const Pagination = (props) => {
     const createTemplate = () => {
         return div({ className: 'pagination'}, [
             button({ onclick: props.onPrevious }, '< prev'),
-            span({}, `${props.currentPage} / ${props.totalPages}`),
+            span({}, `${props.currentPage}`),
             button({ onclick: props.onNext }, 'next >')
         ]);
     };
