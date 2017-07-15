@@ -29,7 +29,7 @@
         "headers": [
           {
             "key": "Link",
-            "value": "</bundle.js>;rel=preload;as=script,</sw.js>;rel=preload;as=worker;nopush,<https://hnpwa.com/api/v0/news.json?page=1>;rel=preload;as=fetch;crossorigin"
+            "value": "</bundle.js>;rel=preload;as=script,</sw.js>;rel=preload;as=worker;nopush,<https://hnpwa.com/api/v0/news.json?page=1>;rel=preload;as=fetch;crossorigin,<https://hacker-news.firebaseio.com/v0/topstories.json>;rel=preload;as=fetch;crossorigin"
           }
         ]
       }
