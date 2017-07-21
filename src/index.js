@@ -2,28 +2,18 @@ import { initialize } from './core/router';
 import { GenericView } from './elements/generic-view';
 import { CommentsView } from './views/comments-view';
 
-const routes = {
-    '/': () => GenericView({
-        viewClassName: 'top-view',
-        urlName: 'topstories'
-    }),
-    '/news': () => GenericView({
-        viewClassName: 'news-view',
-        urlName: 'newstories'
-    }),
-    '/show': () => GenericView({
-        viewClassName: 'show-view',
-        urlName: 'showstories'
-    }),
-    '/ask': () => GenericView({
-        viewClassName: 'ask-view',
-        urlName: 'askstories'
-    }),
-    '/jobs': () => GenericView({
-        viewClassName: 'jobs-view',
-        urlName: 'jobstories'
-    }),
+const defineView = (viewClassName, urlName) => {
+    return (props) => {
+        return GenericView({ viewClassName, urlName, ...props });
+    }
+};
 
+const routes = {
+    '/': defineView('top-view', 'topstories'),
+    '/news': defineView('news-view', 'newstories'),
+    '/show': defineView('show-view','showstories'),
+    '/ask': defineView('ask-view', 'askstories'),
+    '/jobs': defineView('jobs-view', 'jobstories'),
     '/item': CommentsView
 };
 
