@@ -51,7 +51,8 @@ export const GenericView = ({ viewClassName, urlName, routeParams }) => {
             Pagination({
                 currentPage: pageNumber,
                 onPrevious: () => previousPage(),
-                onNext: () => nextPage()
+                onNext: () => nextPage(),
+                hasMore: articles.length === 30
             })
         ].concat(articles));
     };
