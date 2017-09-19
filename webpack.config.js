@@ -1,7 +1,9 @@
 const path = require('path');
 const webpack = require('webpack');
 const CopyPlugin = require('copy-webpack-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 const isProd = process.env.NODE_ENV === 'production';
+const version = require('./package.json').version;
 
 const devtool = isProd
     ? 'source-map'
@@ -13,14 +15,14 @@ const entry = {
 
 const output = {
     path: path.resolve('./public'),
-    filename: 'bundle.js',
+    filename: `bundle.${version}.js`,
     publicPath: '/'
 };
 
 const modules = {
     loaders: [
         { test: /\.(jpg|png|gif)$/, loader: 'url-loader?limit=10000' },
-        { test: /\.html$/, loader: 'file-loader' },
+        { test: /\.html$/, loader: 'html-loader' },
         { test: /\.css$/, loader: 'style!css' },
         { test: /\.scss$/, loaders: ['style-loader', 'css-loader', 'sass-loader'] },
         { test: /\.js$/, loader: 'babel-loader', query: { plugins: [ 'babel-plugin-transform-object-rest-spread' ], presets: ['env'] } }
@@ -29,13 +31,16 @@ const modules = {
 
 const plugins = [
     new CopyPlugin([
-        { from: path.resolve(__dirname, './src/index.html'), to: '.' },
         { from: path.resolve(__dirname, './src/manifest.json'), to: '.' },
         { from: path.resolve(__dirname, './src/sw.js'), to: '.' },
         { from: path.resolve(__dirname, './assets'), to: '.' },
         { from: path.resolve(__dirname, './favicon.ico'), to: '.' }
     ]),
     new webpack.optimize.ModuleConcatenationPlugin(),
+    new HtmlWebpackPlugin({
+        template: path.resolve(__dirname, 'src/index.html'),
+        filename: 'index.html'
+    })
 ];
 
 const devServer = {
