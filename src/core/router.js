@@ -67,8 +67,9 @@ function getLocationParams() {
 
 export const loadRoute = () => {
     let currentRoute = window.location.pathname;
+    console.log('currentRoute', currentRoute, `nav a[href=${currentRoute}]`);
     let route = routes[currentRoute];
-    let navLink = document.querySelector(`nav a[href="${currentRoute}"`);
+    let navLink = document.querySelector(`nav a[href="${currentRoute}"]`);
     let currentActiveLink = document.querySelector(`nav a.active`);
 
     if (route) {
