@@ -3,7 +3,6 @@ const webpack = require('webpack');
 const CopyPlugin = require('copy-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const isProd = process.env.NODE_ENV === 'production';
-const version = require('./package.json').version;
 
 const devtool = isProd
     ? 'source-map'
@@ -15,7 +14,7 @@ const entry = {
 
 const output = {
     path: path.resolve('./public'),
-    filename: `bundle.${version}.js`,
+    filename: `bundle.js`,
     publicPath: '/'
 };
 
@@ -36,11 +35,7 @@ const plugins = [
         { from: path.resolve(__dirname, './assets'), to: '.' },
         { from: path.resolve(__dirname, './favicon.ico'), to: '.' }
     ]),
-    new webpack.optimize.ModuleConcatenationPlugin(),
-    new HtmlWebpackPlugin({
-        template: path.resolve(__dirname, 'src/index.html'),
-        filename: 'index.html'
-    })
+    new webpack.optimize.ModuleConcatenationPlugin()
 ];
 
 const devServer = {

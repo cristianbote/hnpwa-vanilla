@@ -40,6 +40,11 @@ export const GenericView = ({ viewClassName, urlName, routeParams }) => {
                 });
 
                 articles = nodeArticles.slice();
+
+                render();
+            })
+            .catch(e => {
+                console.log('You are offline');
                 render();
             });
     };
@@ -63,9 +68,18 @@ export const GenericView = ({ viewClassName, urlName, routeParams }) => {
         }, `<div class="content-loading">Loading content</div>`);
     }
 
-    function render() {
+    function createOfflineTemplate() {
+        return div({
+            className: viewClassName
+        }, `<div class="offline-content">
+Failed to fetch new data. You might be offline and the data is not in cache yet.
+<div class="logo-icon"></div>
+</div>`);
+    }
+
+    function render(renderFunc) {
         if (!!template.parentElement) {
-            let newTemplate = createTemplate();
+            let newTemplate = renderFunc ? renderFunc() : createTemplate();
             template.parentElement.replaceChild(newTemplate, template);
             template = newTemplate;
             template.classList.remove('loading');

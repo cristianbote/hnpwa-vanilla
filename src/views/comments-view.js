@@ -6,7 +6,6 @@ const commentElement = (data) => {
     let replies = data && data.comments && data.comments.length && data.comments.map(item => commentElement(item).outerHTML);
 
     return div({ className: 'comment' }, `
-        <div class="reply">&#8735;</div>
         <div class="details">
             <div class="user">${data.user}</div>
             <div class="time">${data.time_ago}</div>
@@ -54,7 +53,7 @@ export const CommentsView = (props) => {
                 ${data.content || 'No content'}
             </div>
             <div class="comments">
-                ${hasComments ? 'Comments' : 'No coments'}
+                <div class="subtitle">${hasComments ? 'Comments' : 'No coments'}</div>
                 
                 ${commentsContent.innerHTML}
             </div>
