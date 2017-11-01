@@ -1,7 +1,7 @@
 const fs = require('fs');
 const FILE_PATH = './public/sw.js';
 const DESTINATION_PATH = './public/sw.js';
-const HASH = Math.round(Date.now() * Math.random()).toString(32);
+const HASH = 'hnpwa-' + Date.now();
 
 console.log('[sw] build with', HASH);
 let fileData = fs.readFileSync(FILE_PATH, 'utf8');

@@ -294,9 +294,17 @@
 
         .item-view h1 {
             font-size: 1.1em;
-            padding: 16px;
             margin: 0;
             background-color: rgba(256, 256, 256, 0.75);
+            padding: 16px;
+        }
+
+        .item-view a,
+        .item-view a:link,
+        .item-view a:visited {
+            text-decoration: none;
+            color: inherit;
+            display: block;
         }
 
         .item-view .subtitle {
@@ -344,6 +352,10 @@
             padding: 8px 16px;
             color: black;
             word-wrap: break-word;
+        }
+
+        .item-view pre {
+            overflow: auto;
         }
 
         .item-view .comments {

@@ -39,11 +39,16 @@ export const CommentsView = (props) => {
     function createTemplate() {
         let hasComments = data.comments.length;
         let commentsContent = commentsElement(data.comments);
+        let url = data.url;
+
+        url = url.indexOf('item') === 0 ? '/' + url : url;
 
         return div({
             className: 'item-view'
         }, `
-            <h1 className="title">${data.title}</h1>
+            <a class="title" href="${url}" target="_blank">
+                <h1>${data.title}</h1>
+            </a>
             <div class="subtitle ${data.type}">
                 <div class="user">${data.user}</div>
                 <div class="time-ago">${data.time_ago}</div>
