@@ -58,8 +58,11 @@ export const GenericView = ({ viewClassName, urlName, routeParams }) => {
                 onPrevious: () => previousPage(),
                 onNext: () => nextPage(),
                 hasMore: articles.length === 30
-            })
-        ].concat(articles));
+            }),
+            div({
+                className: 'wrapper'
+            }, articles)
+        ]);
     };
 
     function createFirstTemplate() {
