@@ -63,6 +63,10 @@ export const GenericView = ({ viewClassName, urlName, routeParams }) => {
     };
 
     function createFirstTemplate() {
+
+        // Set the title
+        document.querySelector('title').innerText = 'Vanilla Hacker News PWA';
+
         return div({
             className: viewClassName
         }, `<div class="content-loading">Loading content</div>`);

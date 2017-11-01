@@ -43,6 +43,9 @@ export const CommentsView = (props) => {
 
         url = url.indexOf('item') === 0 ? '/' + url : url;
 
+        // Set the title
+        document.querySelector('title').innerText = `${data.title} | Vanilla Hacker News PWA`;
+
         return div({
             className: 'item-view'
         }, `
