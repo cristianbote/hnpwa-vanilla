@@ -3,9 +3,9 @@ import { urls } from '../urls';
 
 const commentElement = (data) => {
 
-    let replies = data && data.comments && data.comments.length && data.comments.map(item => commentElement(item).outerHTML);
+    let replies = data && data.comments && data.comments.length && data.comments.map(item => commentElement(item));
 
-    return div({ className: 'comment' }, `
+    return`<div class="comment">
         <div class="details">
             <div class="user">${data.user}</div>
             <div class="time">${data.time_ago}</div>
@@ -15,17 +15,18 @@ const commentElement = (data) => {
         </div>
         
         ${replies ? replies.join('') : ''}
-    `);
+    </div>`;
 };
 
 
 const commentsElement = (comments) => {
-    return div({ className: 'comments' }, comments.length && comments.map(data => commentElement(data)));
+    return `<div class="comments">${comments.length && comments.map(data => commentElement(data)).join('')}</div>`;
 };
 
 export const CommentsView = (props) => {
     let template;
     let data;
+    let timeoutId;
 
     const loadData = () => {
         fetch(urls.item(props.routeParams.id))
@@ -46,6 +47,9 @@ export const CommentsView = (props) => {
         // Set the title
         document.querySelector('title').innerText = `${data.title} | Vanilla Hacker News PWA`;
 
+        // Clear timeout
+        if (timeoutId) clearTimeout(timeoutId);
+
         return div({
             className: 'item-view'
         }, `
@@ -63,15 +67,28 @@ export const CommentsView = (props) => {
             <div class="comments">
                 <div class="subtitle">${hasComments ? 'Comments' : 'No coments'}</div>
                 
-                ${commentsContent.innerHTML}
+                ${commentsContent}
             </div>
         `);
     }
 
     function createFirstTemplate() {
-        return div({
+        const firstTemplate = div({
             className: 'item-view'
         }, '<div class="content-loading">Loading content</div>');
+
+        timeoutId = setTimeout(() => {
+            firstTemplate.querySelector('.content-loading').innerHTML += '<br/>...<br/>Looks like it takes longer than expected';
+            scheduleLongerTimeout(firstTemplate);
+        }, 1e3);
+
+        return firstTemplate;
+    }
+
+    function scheduleLongerTimeout(el) {
+        timeoutId = setTimeout(() => {
+            el.querySelector('.content-loading').innerHTML += '</br>...<br/>It\'s been over 2 seconds now, content should be arriving soon';
+        }, 1500);
     }
 
     function render() {
