@@ -13,7 +13,9 @@
   "keywords": [],
   "author": "Cristian Bote",
   "license": "ISC",
-  "dependencies": {},
+  "dependencies": {
+    "unfetch": "^3.0.0"
+  },
   "devDependencies": {
     "babel-core": "^6.25.0",
     "babel-loader": "^6.4.1",

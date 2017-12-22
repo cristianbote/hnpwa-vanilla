@@ -1,12 +1,28 @@
 /**
+ * Unique id generator
+ * @returns {string}
+ */
+function uniqueId() {
+    return Math.round(Math.random() * Date.now()).toString(20).substr(0, 4);
+}
+
+/**
  * Set attributes on giving element
  * @param {object} attrs
  * @param {HTMLElement} el
  */
 function setAttrs(attrs, el) {
-    let uniqueId = Math.round(Math.random() * Date.now()).toString(20).substr(0, 4);
     Object.keys(attrs).forEach(key => el[key] = attrs[key]);
-    el.setAttribute('uid', uniqueId);
+    el.setAttribute('uid', uniqueId());
+}
+
+/**
+ * Naive sanitizer for patterns that match `on[event]=`. Replacing it with random value.
+ * @param {string }val
+ * @returns {string}
+ */
+function naiveSanitizer(val) {
+    return val.replace(/(on\w+=)/gmi, `${uniqueId()}=`);
 }
 
 /**
@@ -17,7 +33,7 @@ function setAttrs(attrs, el) {
  */
 function ifStringSetText(val, el) {
     if (!!val && !!val.match) {
-        el.innerHTML = val;
+        el.innerHTML = naiveSanitizer(val);
         return true;
     }
 
