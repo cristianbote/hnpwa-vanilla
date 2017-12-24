@@ -26,10 +26,17 @@ export const GenericView = ({ viewClassName, urlName, routeParams }) => {
     };
 
     const loadData = () => {
+        const noPush = routeParams.noPush;
+
         template.classList.add('loading');
 
-        // Set the page number in address bar
-        history.pushState(null, null, `${location.pathname}?page=${pageNumber}`);
+        if (!noPush) {
+            const currentPath = location.pathname;
+            const url = `${currentPath}?page=${pageNumber}`;
+
+            // Set the page number in address bar
+            history.pushState({url, pathname: currentPath}, '', url);
+        }
 
         fetch(urls[urlName](pageNumber))
             .then(res => res.json())

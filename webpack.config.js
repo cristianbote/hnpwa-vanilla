@@ -24,7 +24,17 @@ const modules = {
         { test: /\.html$/, loader: 'html-loader' },
         { test: /\.css$/, loader: 'style!css' },
         { test: /\.scss$/, loaders: ['style-loader', 'css-loader', 'sass-loader'] },
-        { test: /\.js$/, loader: 'babel-loader', query: { plugins: [ 'babel-plugin-transform-object-rest-spread' ], presets: ['env'] } }
+        {
+            test: /\.js$/, loader: 'babel-loader', query: {
+            plugins: ['babel-plugin-transform-object-rest-spread'],
+            presets: [
+                ['env', {
+                    "targets": {
+                        "browsers": ["last 2 versions", "safari >= 7"]
+                    }
+                }]
+            ]}
+        }
     ]
 };
 
