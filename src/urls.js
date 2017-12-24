@@ -1,8 +1,8 @@
 const nodeHNAPI = 'https://node-hnapi.herokuapp.com';
 const hnPWA = 'https://hnpwa.com/api/v0';
 
-const baseDomain = nodeHNAPI;
-const extension = '';
+const baseDomain = hnPWA;
+const extension = '.json';
 
 export const urls = {
     'newstories': (page) => `${baseDomain}/newest${extension}?page=${page}`,

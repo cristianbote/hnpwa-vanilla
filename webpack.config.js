@@ -1,7 +1,6 @@
 const path = require('path');
 const webpack = require('webpack');
 const CopyPlugin = require('copy-webpack-plugin');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
 const isProd = process.env.NODE_ENV === 'production';
 
 const devtool = isProd
@@ -53,7 +52,6 @@ const devServer = {
     historyApiFallback: {
         index: './src/index.html',
     },
-    stats: 'minimal',
     disableHostCheck: true
 };
 

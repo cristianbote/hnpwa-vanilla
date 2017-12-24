@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "serve": "webpack-dev-server --progress --inline --port 8080 --config webpack.config.js",
+    "serve-prod": "NODE_ENV=production webpack-dev-server --port 8080 --config webpack.config.js",
     "build-sw": "node sw-build.js",
     "html-minify": "node html-minify.js",
     "build-prod": "rm -rf public; NODE_ENV=production webpack --config webpack.config.js; npm run build-sw; npm run html-minify",
