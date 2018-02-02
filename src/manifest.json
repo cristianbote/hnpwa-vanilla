@@ -1,6 +1,7 @@
 {
-  "short_name": "Hacker News",
-  "name": "Vanilla Hacker News",
+  "short_name": "Hacker News PWA",
+  "name": "Vanilla Hacker News PWA",
+  "description": "Hacker News PWA built with vanilla javascript - part of hnpwa.com",
   "icons": [
     {
       "src": "/icons/icon-72x72.png",
@@ -44,6 +45,7 @@
     }
   ],
   "start_url": "/",
+  "scope": "/",
   "background_color": "#f5f5f5",
   "theme_color": "#f5f5f5",
   "display": "standalone"

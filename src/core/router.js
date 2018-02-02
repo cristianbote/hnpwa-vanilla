@@ -82,7 +82,7 @@ export const loadRoute = (url, noPush) => {
         if (navLink) navLink.classList.add('active');
 
         hooks.beforeMount(route, currentRoute);
-        mountRouteElement(route, { ...getLocationParams(), noPush });
+        mountRouteElement(route, Object.assign({}, getLocationParams(), { noPush }));
     } else {
         console.log('no route found');
     }
@@ -112,7 +112,7 @@ window.addEventListener('popstate', e => {
 export const initialize = (routesDefinition, containerElement, hooksDefinition) => {
     routes = routesDefinition;
     container = containerElement;
-    hooks = { ...hooks, ...hooksDefinition };
+    hooks = Object.assign({}, hooks, hooksDefinition);
 
     // Assign the onclick action
     anchorTags = [].slice.call(document.querySelectorAll('nav .view'));

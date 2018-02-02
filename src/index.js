@@ -6,7 +6,7 @@ import { CommentsView } from './views/comments-view';
 
 const defineView = (viewClassName, urlName) => {
     return (props) => {
-        return GenericView({ viewClassName, urlName, ...props });
+        return GenericView({ viewClassName, urlName, container: props.container, routeParams: props.routeParams });
     }
 };
 

@@ -2,7 +2,7 @@ const CACHE_NAME = '{{cache}}';
 
 const CRITICAL = [
     '/',
-    '/bundle.js',
+    '/hnpwa-vanilla.js',
     '/icons/icon-144x144.png'
 ];
 

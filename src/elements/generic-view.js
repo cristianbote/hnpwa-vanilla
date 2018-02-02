@@ -43,7 +43,7 @@ export const GenericView = ({ viewClassName, urlName, routeParams }) => {
             .then(res => {
 
                 let nodeArticles = res.map(itemData => {
-                    return ArticleElement({...itemData});
+                    return ArticleElement(JSON.parse(JSON.stringify(itemData)));
                 });
 
                 articles = nodeArticles.slice();
@@ -85,10 +85,7 @@ export const GenericView = ({ viewClassName, urlName, routeParams }) => {
     function createOfflineTemplate() {
         return div({
             className: viewClassName
-        }, `<div class="offline-content">
-Failed to fetch new data. You might be offline and the data is not in cache yet.
-<div class="logo-icon"></div>
-</div>`);
+        }, `<div class="offline-content">Failed to fetch new data. You might be offline and the data is not in cache yet.<div class="logo-icon"></div></div>`);
     }
 
     function render(renderFunc) {

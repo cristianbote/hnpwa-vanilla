@@ -29,7 +29,7 @@
         "headers": [
           {
             "key": "Link",
-            "value": "<https://hnpwa.com>;rel=dns-prefetch,<https://node-hnapi.herokuapp.com>;rel=dns-prefetch,</bundle.js>;rel=preload;as=script,<https://hnpwa.com/api/v0/news.json?page=1>;rel=preload;as=fetch;crossorigin"
+            "value": "<https://hnpwa.com>;rel=dns-prefetch,<https://node-hnapi.herokuapp.com>;rel=dns-prefetch,</hnpwa-vanilla.js>;rel=preload;as=script,<https://hnpwa.com/api/v0/news.json?page=1>;rel=preload;as=fetch;crossorigin"
           }
         ]
       }
