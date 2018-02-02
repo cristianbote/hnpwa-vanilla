@@ -24,7 +24,6 @@ const copy = (from, to) => {
         args.push('-r');
     }
 
-    console.log('exec', `cp ${args.join(' ')} ${from} ${to}`);
     exec(`cp ${args.join(' ')} ${from} ${to}`, (err, stdout) => {
 
         if (err) {
