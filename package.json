@@ -7,9 +7,11 @@
     "build-sw": "node sw-build.js",
     "html-minify": "node html-minify.js",
     "copy-assets": "node copy-assets.js",
-    "bundle": "microbundle --output public --target browser --format cjs",
+    "bundle": "microbundle --output public --target browser --format cjs --sourcemap false",
+    "bundle-watch": "microbundle watch --output public --target browser --format cjs --sourcemap false",
     "build-prod": "rm -rf public; npm run bundle; npm run copy-assets; npm run build-sw; npm run html-minify",
-    "deploy": "npm run build-prod; firebase deploy"
+    "deploy": "npm run build-prod; firebase deploy",
+    "serve": "firebase serve -p 8080"
   },
   "keywords": [],
   "author": "Cristian Bote",
@@ -18,8 +20,9 @@
     "unfetch": "^3.0.0"
   },
   "devDependencies": {
+    "firebase": "^4.10.1",
     "html-minifier": "^3.5.7",
-    "microbundle": "^0.4.3"
+    "microbundle": "^0.4.4"
   },
   "engines": {
     "node": ">=5.0.0"
