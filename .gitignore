@@ -4,3 +4,4 @@ node_modules
 public
 certs
 .firebaserc
+firebase-debug.log
