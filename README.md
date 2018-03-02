@@ -13,14 +13,8 @@ Made with ❤️ in Cluj-Napoca, Transylvania 🏰
 
 1. Clone the repo    
 1. Run `npm install`
-1. Run
-    * `npm run copy-assets` 
-    * `npm run html-minify`
-    * `npm run bundle`
-    * `npm run build-sw`
-1. It will generate a `public` folder with assets (html, css, js) inside them. Move to `public` folder and run `python -m SimpleHTTPServer 8080`.
-1. Open it up in your browser
-    * https://127.0.0.1:8080 or localhost:8080
+1. Run `npm run build-prod`
+1. Run `npm run serve` and would spun up a firebase locally served server.
 
 ## Details
 
