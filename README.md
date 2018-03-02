@@ -13,10 +13,8 @@ Made with ❤️ in Cluj-Napoca, Transylvania 🏰
 
 1. Clone the repo    
 1. Run `npm install`
-1. Serve it locally with `npm run serve`
-    * Running _production_ locally `npm run start-prod`
-1. Open it up in your browser
-    * https://127.0.0.1:8080
+1. Run `npm run build-prod`
+1. Run `npm run serve` and would spun up a firebase locally served server.
 
 ## Details
 
