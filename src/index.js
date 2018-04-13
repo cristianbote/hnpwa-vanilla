@@ -4,24 +4,22 @@ import { initialize } from './core/router';
 import { GenericView } from './elements/generic-view';
 import { CommentsView } from './views/comments-view';
 
-const defineView = (viewClassName, urlName) => {
+const createGenericView = (viewClassName, urlName) => {
     return (props) => {
         return GenericView({ viewClassName, urlName, container: props.container, routeParams: props.routeParams });
     }
 };
 
 const routes = {
-    '/': defineView('top-view', 'topstories'),
-    '/news': defineView('news-view', 'newstories'),
-    '/show': defineView('show-view','showstories'),
-    '/ask': defineView('ask-view', 'askstories'),
-    '/jobs': defineView('jobs-view', 'jobstories'),
+    '/': createGenericView('top-view', 'topstories'),
+    '/news': createGenericView('news-view', 'newstories'),
+    '/show': createGenericView('show-view','showstories'),
+    '/ask': createGenericView('ask-view', 'askstories'),
+    '/jobs': createGenericView('jobs-view', 'jobstories'),
     '/item': CommentsView
 };
 
 const viewContainer = document.querySelector('.view-container');
 
-const hooks = {};
-
 // Initialize the app
-initialize(routes, viewContainer, hooks);
+initialize(routes, viewContainer);

@@ -2,11 +2,6 @@
 let container;
 let currentView;
 let routes = {};
-let hooks = {
-    beforeMount: () => {},
-    afterMount: () => {}
-};
-let anchorTags;
 
 function _cleanContainer() {
     if (currentView && currentView.parentElement) {
@@ -22,31 +17,6 @@ function mountRouteElement(elem, routeParams) {
     currentView = elem({ container, routeParams });
 
     container.appendChild(currentView);
-    hooks.afterMount();
-}
-
-function lookupPathsWithParams(path) {
-    let parts = path.split('/');
-    let out;
-
-    Object.keys(routes).map(id => {
-
-        if (out) {
-            return;
-        }
-
-        let savedRouteParts = id.split('/');
-
-        let res = savedRouteParts.map((part, i) => {
-            return (part === parts[i] || part[0] === '{') ? 0 : part;
-        }).reduce((a, b) => { return a + b });
-
-        if (id !== '/' && res === 0) {
-            out = routes[id];
-        }
-    });
-
-    return out;
 }
 
 function getFullUrl(href) {
@@ -80,8 +50,6 @@ export const loadRoute = (url, noPush) => {
     if (route) {
         if (currentActiveLink) currentActiveLink.classList.remove('active');
         if (navLink) navLink.classList.add('active');
-
-        hooks.beforeMount(route, currentRoute);
         mountRouteElement(route, Object.assign({}, getLocationParams(), { noPush }));
     } else {
         console.log('no route found');
@@ -109,14 +77,13 @@ window.addEventListener('popstate', e => {
     }
 });
 
-export const initialize = (routesDefinition, containerElement, hooksDefinition) => {
+export const initialize = (routesDefinition, containerElement) => {
     routes = routesDefinition;
     container = containerElement;
-    hooks = Object.assign({}, hooks, hooksDefinition);
 
     // Assign the onclick action
-    anchorTags = [].slice.call(document.querySelectorAll('nav .view'));
-    anchorTags.forEach(node => node.onclick = window.handleOnClick);
+    [].slice.call(document.querySelectorAll('nav .view'))
+        .forEach(node => node.onclick = window.handleOnClick);
 
     loadRoute();
 };

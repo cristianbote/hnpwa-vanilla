@@ -3,6 +3,15 @@ import { urls } from '../urls';
 import { ArticleElement } from '../elements/article-element';
 import { Pagination } from '../elements/pagination';
 
+const createPagination = (props) => (
+    Pagination({
+        currentPage: props.pageNumber,
+        onPrevious: () => props.previousPage(),
+        onNext: () => props.nextPage(),
+        hasMore: props.hasMore
+    })
+);
+
 export const GenericView = ({ viewClassName, urlName, routeParams }) => {
     let articles = [];
     let template;
@@ -57,18 +66,24 @@ export const GenericView = ({ viewClassName, urlName, routeParams }) => {
     };
 
     const createTemplate = () => {
+        const hasMore = articles.length === 30;
+        const paginationComponent = () => createPagination({
+            pageNumber,
+            previousPage,
+            nextPage,
+            hasMore
+        });
+
         return div({
             className: viewClassName
         }, [
-            Pagination({
-                currentPage: pageNumber,
-                onPrevious: () => previousPage(),
-                onNext: () => nextPage(),
-                hasMore: articles.length === 30
-            }),
             div({
                 className: 'wrapper'
-            }, articles)
+            },
+                [paginationComponent()]
+                    .concat(articles)
+                    .concat(paginationComponent())
+            )
         ]);
     };
 
@@ -80,12 +95,6 @@ export const GenericView = ({ viewClassName, urlName, routeParams }) => {
         return div({
             className: viewClassName
         }, `<div class="content-loading">Loading content</div>`);
-    }
-
-    function createOfflineTemplate() {
-        return div({
-            className: viewClassName
-        }, `<div class="offline-content">Failed to fetch new data. You might be offline and the data is not in cache yet.<div class="logo-icon"></div></div>`);
     }
 
     function render(renderFunc) {

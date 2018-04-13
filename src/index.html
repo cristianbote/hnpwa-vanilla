@@ -61,13 +61,12 @@
             display: -webkit-box;
             display: -ms-flexbox;
             display: flex;
-            background: white;
+            background: transparent;
             -webkit-box-orient: horizontal;
             -webkit-box-direction: normal;
             -ms-flex-direction: row;
             flex-direction: row;
             z-index: 1;
-            border-bottom: 1px solid lightgrey;
             -webkit-box-align: center;
             -ms-flex-align: center;
             align-items: center;
@@ -134,7 +133,7 @@
         }
 
         nav a.active {
-            background-color: #ffb400;
+            background-color: rgba(255, 180, 0, 0.6);
             color: black;
             border-radius: 3px;
         }
@@ -304,7 +303,7 @@
         .item-view h1 {
             font-size: 1.1em;
             margin: 0;
-            background-color: rgba(256, 256, 256, 0.75);
+            background-color: transparent;
             padding: 16px;
         }
 
@@ -322,7 +321,7 @@
             display: -ms-flexbox;
             display: flex;
             padding: 8px 16px;
-            background-color: rgba(256, 256, 256, 0.3);
+            background-color: transparent;
         }
 
         .item-view .subtitle .user {
@@ -517,12 +516,6 @@
 
         .top-view {
             flex: 1;
-            height: 100%;
-            display: flex;
-            flex-direction: column;
-        }
-
-        .top-view .wrapper {
             display: flex;
             flex-direction: column;
             height: inherit;

@@ -1,9 +1,17 @@
 import { div } from '../core/dom-api';
 import { urls } from '../urls';
 
+const commentsSort = (a, b) => {
+    if (a.time < b.time) return -1;
+    if (a.time > b.time) return 1;
+    return 0;
+};
+
 const commentElement = (data) => {
 
-    let replies = data && data.comments && data.comments.length && data.comments.map(item => commentElement(item));
+    let replies = data && data.comments && data.comments.length && data.comments
+        .sort(commentsSort)
+        .map(item => commentElement(item));
 
     return`<div class="comment">
         <div class="details">
@@ -20,7 +28,7 @@ const commentElement = (data) => {
 
 
 const commentsElement = (comments) => {
-    return `<div class="comments">${comments.length && comments.map(data => commentElement(data)).join('')}</div>`;
+    return `<div class="comments">${comments.length && comments.sort(commentsSort).map(data => commentElement(data)).join('')}</div>`;
 };
 
 export const CommentsView = (props) => {
