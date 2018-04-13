@@ -13,12 +13,11 @@ function uniqueId() {
  */
 function setAttrs(attrs, el) {
     Object.keys(attrs).forEach(key => el[key] = attrs[key]);
-    el.setAttribute('uid', uniqueId());
 }
 
 /**
  * Naive sanitizer for patterns that match `on[event]=`. Replacing it with random value.
- * @param {string }val
+ * @param {string} val
  * @returns {string}
  */
 function naiveSanitizer(val) {
@@ -47,7 +46,7 @@ function ifStringSetText(val, el) {
  */
 function createElement(tagName) {
     return (attrs, children) => {
-        let el = document.createElement(tagName);
+        const el = document.createElement(tagName);
         attrs && setAttrs(attrs, el);
         if (children) {
             if (!!children.map) {

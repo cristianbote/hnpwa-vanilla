@@ -46,7 +46,7 @@
   ],
   "start_url": "/",
   "scope": "/",
-  "background_color": "#f5f5f5",
-  "theme_color": "#f5f5f5",
+  "background_color": "#f8f8ff",
+  "theme_color": "#f8f8ff",
   "display": "standalone"
 }
