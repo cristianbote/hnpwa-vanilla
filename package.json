@@ -21,6 +21,7 @@
   },
   "devDependencies": {
     "firebase": "^4.10.1",
+    "firebase-tools": "^3.18.4",
     "html-minifier": "^3.5.7",
     "microbundle": "^0.4.4"
   },
