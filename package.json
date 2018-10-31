@@ -11,7 +11,7 @@
     "bundle-watch": "microbundle watch --output public --target browser --format cjs --sourcemap false",
     "build-prod": "rm -rf public; npm run bundle; npm run copy-assets; npm run build-sw; npm run html-minify",
     "deploy": "npm run build-prod; firebase deploy",
-    "serve": "firebase serve -p 8080"
+    "serve": "firebase serve -p 8080 --project hnpwa-vanilla"
   },
   "keywords": [],
   "author": "Cristian Bote",

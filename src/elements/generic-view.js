@@ -81,6 +81,9 @@ export const GenericView = ({ viewClassName, urlName, routeParams }) => {
                 className: 'wrapper'
             },
                 [paginationComponent()]
+                    .concat([
+                        div({ className: "donut" })
+                    ])
                     .concat(articles)
                     .concat(paginationComponent())
             )
