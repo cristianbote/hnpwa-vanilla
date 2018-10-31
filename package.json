@@ -10,7 +10,7 @@
     "bundle": "microbundle --output public --target browser --format cjs --sourcemap false",
     "bundle-watch": "microbundle watch --output public --target browser --format cjs --sourcemap false",
     "build-prod": "rm -rf public; npm run bundle; npm run copy-assets; npm run build-sw; npm run html-minify",
-    "deploy": "npm run build-prod; firebase deploy",
+    "deploy": "npm run build-prod; firebase deploy --project hnpwa-vanilla",
     "serve": "firebase serve -p 8080 --project hnpwa-vanilla"
   },
   "keywords": [],
@@ -20,8 +20,8 @@
     "unfetch": "^3.0.0"
   },
   "devDependencies": {
-    "firebase": "^4.10.1",
-    "firebase-tools": "^3.18.4",
+    "firebase": "^5.5.6",
+    "firebase-tools": "^6.0.0",
     "html-minifier": "^3.5.7",
     "microbundle": "^0.4.4"
   },
