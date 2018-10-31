@@ -1,6 +1,6 @@
 {
   "name": "hnpwa-vanilla",
-  "version": "2.1.3",
+  "version": "2.2.0",
   "description": "HN PWA build with no framework",
   "main": "index.js",
   "scripts": {
