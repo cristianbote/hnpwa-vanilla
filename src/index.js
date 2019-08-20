@@ -1,5 +1,3 @@
-import 'unfetch/polyfill';
-
 import { initialize } from './core/router';
 import { GenericView } from './elements/generic-view';
 import { CommentsView } from './views/comments-view';
