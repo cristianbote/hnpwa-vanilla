@@ -29,7 +29,7 @@
         "headers": [
           {
             "key": "Link",
-            "value": "<https://api.hnpwa.com>;rel=preconnect,<https://unpkg.com>;rel=preconnect,<https://unpkg.com/unfetch/polyfill>;rel=preload;crossorigin;as=script,</hnpwa-vanilla.js>;rel=preload;as=script,</favicon.ico>;rel=preload;as=image"
+            "value": "<https://api.hnpwa.com>;rel=preconnect,</hnpwa-vanilla.js>;rel=preload;as=script,</favicon.ico>;rel=preload;as=image"
           }
         ]
       }
