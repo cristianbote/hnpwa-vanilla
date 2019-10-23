@@ -4,14 +4,15 @@
   "description": "HN PWA build with no framework",
   "main": "index.js",
   "scripts": {
-    "build-sw": "node sw-build.js",
     "html-minify": "node html-minify.js",
     "copy-assets": "node copy-assets.js",
     "bundle": "microbundle --output public --target browser --format cjs --no-sourcemap",
-    "bundle-watch": "microbundle watch --output public --target browser --format cjs --sourcemap false",
-    "build-prod": "rm -rf public; npm run bundle; npm run copy-assets; npm run build-sw; npm run html-minify",
+    "bundle:watch": "microbundle watch --output public --target browser --format cjs --sourcemap false",
+    "bundle:sw": "node sw-build.js",
+    "build": "rm -rf public; npm run bundle; npm run copy-assets; npm run bundle:sw; npm run html-minify",
     "deploy": "npm run build-prod; firebase deploy --project hnpwa-vanilla",
-    "serve": "firebase serve -p 8080 --project hnpwa-vanilla"
+    "serve": "serve ./public --listen 8080",
+    "dev": "(npm run copy-assets & npm run bundle:sw & npm run bundle:watch & npm run serve)"
   },
   "keywords": [],
   "author": "Cristian Bote",
@@ -20,7 +21,8 @@
     "firebase": "^5.5.6",
     "firebase-tools": "^6.0.0",
     "html-minifier": "^3.5.7",
-    "microbundle": "^0.11.0"
+    "microbundle": "^0.11.0",
+    "serve": "^11.2.0"
   },
   "engines": {
     "node": ">=5.0.0"
