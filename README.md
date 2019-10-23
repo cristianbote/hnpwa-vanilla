@@ -13,7 +13,7 @@ Made with ❤️ in Cluj-Napoca, Transylvania 🏰
 
 1. Clone the repo    
 1. Run `npm install`
-1. Run `npm run dev` and would spun up a firebase locally served server.
+1. Run `npm run dev` and would spun up a server locally and watch
 
 ## Details
 
