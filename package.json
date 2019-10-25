@@ -10,7 +10,7 @@
     "bundle:watch": "microbundle watch --output public --target browser --format cjs --sourcemap false",
     "bundle:sw": "node sw-build.js",
     "build": "rm -rf public; npm run bundle; npm run copy-assets; npm run bundle:sw; npm run html-minify",
-    "deploy": "npm run build-prod; firebase deploy --project hnpwa-vanilla",
+    "deploy": "npm run build; firebase deploy --project hnpwa-vanilla",
     "serve": "serve ./public --listen 8080",
     "dev": "(npm run copy-assets & npm run bundle:sw & npm run bundle:watch & npm run serve)"
   },

@@ -17,7 +17,7 @@ fileData = minify(fileData, {
     preserveLineBreaks: false
 });
 
-fileData = fileData.replace('{{version}}', version);
+fileData = fileData.replace('{{ version }}', version);
 
 console.log('[html-minify] write file', DESTINATION_PATH, ((1 - fileData.length / size) * 100).toFixed(2));
 fs.writeFileSync(DESTINATION_PATH, fileData, 'utf8');
