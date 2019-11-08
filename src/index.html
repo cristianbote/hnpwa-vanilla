@@ -35,7 +35,7 @@
       }
     </script>
     <style>
-      html,
+       html,
       body {
         padding: 0;
         margin: 0;
@@ -50,6 +50,7 @@
         -webkit-box-sizing: border-box;
         box-sizing: border-box;
         -webkit-overflow-scrolling: touch;
+        -webkit-font-smoothing: antialiased;
       }
 
       #app {
@@ -366,20 +367,16 @@
       }
       .item-view .content {
         padding: 8px 16px;
-        color: black;
+        color: currentColor;
         word-wrap: break-word;
       }
       .item-view pre {
         overflow: auto;
       }
       .item-view .comments {
-        padding: 8px 0;
+        margin: 0;
         color: black;
         background-color: rgba(125, 125, 125, 0.05);
-      }
-
-      .comments > .subtitle {
-        padding: 8px;
       }
 
       .comment {
@@ -430,14 +427,15 @@
       }
       .comment .details .user {
         font-weight: bold;
-        margin: 0 8px 0 0;
+        margin: 0 8px;
       }
       .comment .content {
-        padding: 0 8px 8px 8px;
+        padding: 0 16px 8px 16px;
         line-height: 1.4em;
       }
       .comment .content p {
         margin: 0;
+        color: currentColor;
       }
 
       .container {
@@ -554,22 +552,32 @@
 
     @media (prefers-color-scheme: dark) {
       body {
-        background: #2f2f2f;
+        background: #111111;
+        color: white;
       }
-      body header .dark-mode-trigger img {
+      header .dark-mode-trigger img {
         background: white;
         border-radius: 50%;
       }
-      body nav a {
+
+      header {
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+      }
+
+      nav a,
+      nav a:link {
         color: #ececec;
       }
-      body .content-loading {
+
+      .content-loading {
         color: white;
       }
-      body .pagination button {
+
+      .pagination button {
         color: white;
       }
-      body .pagination span {
+
+      .pagination span {
         background: #ffb400;
         display: flex;
         justify-content: center;
@@ -578,22 +586,32 @@
         height: 25px;
         border-radius: 50%;
       }
-      body article a h1 {
+      .item-view h1,
+      article h1 {
         color: #ececec;
       }
-      body article .h1-title .basedomain {
+      article .h1-title .basedomain {
         color: #ffb400;
       }
-      body article .details .author {
+      article .details .author {
         color: white;
       }
-      body article .details .stars {
+      article .details .stars {
         color: white;
       }
-      body article .subdetails .elapsed {
-        color: white;
+      article .subdetails .comments {
+        color: dimgray;
       }
-      body article .subdetails .comments {
+
+      .item-view .comments {
+        background-color: rgba(25, 25, 25, 0.2);
+      }
+
+      .item-view .subtitle {
+        color: dimgray;
+      }
+
+      .comment .content p {
         color: white;
       }
     }
