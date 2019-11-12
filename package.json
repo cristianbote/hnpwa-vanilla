@@ -2,7 +2,7 @@
   "name": "hnpwa-vanilla",
   "version": "2.4.0",
   "description": "HN PWA build with no framework",
-  "main": "index.js",
+  "main": "public/index.js",
   "scripts": {
     "html-minify": "node html-minify.js",
     "copy-assets": "node copy-assets.js",
