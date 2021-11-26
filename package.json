@@ -4,27 +4,24 @@
   "description": "HN PWA build with no framework",
   "main": "public/index.js",
   "scripts": {
-    "html-minify": "node html-minify.js",
-    "copy-assets": "node copy-assets.js",
-    "bundle": "microbundle --output public --target browser --format cjs --no-sourcemap",
-    "bundle:watch": "microbundle watch --output public --target browser --format cjs --sourcemap false",
-    "bundle:sw": "node sw-build.js",
-    "build": "rm -rf public; npm run bundle; npm run copy-assets; npm run bundle:sw; npm run html-minify",
-    "deploy": "npm run build; firebase deploy --project hnpwa-vanilla",
-    "serve": "serve ./public --listen 8080 --single",
-    "dev": "(npm run copy-assets & npm run bundle:sw & npm run bundle:watch & npm run serve)"
+    "dev": "wmr",
+    "build": "wmr build && node ./scripts/versioning.js",
+    "deploy": "npm run build; firebase deploy --project hnpwa-vanilla"
   },
   "keywords": [],
   "author": "Cristian Bote",
   "license": "ISC",
   "devDependencies": {
-    "firebase": "^5.5.6",
-    "firebase-tools": "^6.0.0",
-    "html-minifier": "^3.5.7",
-    "microbundle": "^0.11.0",
-    "serve": "^11.2.0"
+    "@rollup/plugin-replace": "^3.0.0",
+    "firebase": "^9.5.0",
+    "firebase-tools": "^9.23.0",
+    "serve": "^13.0.2"
   },
   "engines": {
     "node": ">=5.0.0"
+  },
+  "dependencies": {
+    "rollup-plugin-html-minifier": "^2.0.0",
+    "wmr": "^3.7.2"
   }
 }

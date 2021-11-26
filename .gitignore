@@ -1,8 +1,9 @@
 .idea
 node_modules
 .DS_Store
-public
+dist
 certs
 .firebaserc
 .firebase
 firebase-debug.log
+.cache
