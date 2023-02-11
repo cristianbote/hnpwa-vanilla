@@ -14,7 +14,7 @@
   "devDependencies": {
     "@rollup/plugin-replace": "^3.0.0",
     "firebase": "^9.5.0",
-    "firebase-tools": "^9.23.0",
+    "firebase-tools": "^11.22.0",
     "serve": "^13.0.2"
   },
   "engines": {
